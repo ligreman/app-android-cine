@@ -10,19 +10,19 @@ import android.widget.Toast;
 
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerCallbacks;
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerFragment;
-import com.ligresoftware.queechanenelcine.fragments.FavouriteFragment;
-import com.ligresoftware.queechanenelcine.fragments.FavouriteFragment2;
+import com.ligresoftware.queechanenelcine.fragments.FavouritesFragment;
+import com.ligresoftware.queechanenelcine.fragments.FavouritesFragment2;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerCallbacks, FavouriteFragment.OnFragmentInteractionListener, FavouriteFragment2.OnFragmentInteractionListener {
+        implements NavigationDrawerCallbacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
-    private FavouriteFragment mFavouriteFragment;
-    private FavouriteFragment2 mFavouriteFragment2;
+    private FavouritesFragment mFavouritesFragment;
+    private FavouritesFragment2 mFavouritesFragment2;
     private Toolbar mToolbar;
 
     @Override
@@ -38,14 +38,11 @@ public class MainActivity extends ActionBarActivity
         // Set up the drawer.
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
 
-        //Fragmentos
-        mFavouriteFragment = new FavouriteFragment();
-        mFavouriteFragment2 = new FavouriteFragment2();
 
         //Coloco este fragmento
-        getFragmentManager().beginTransaction()
-                .replace(R.id.container, mFavouriteFragment, "Favoritos")
-                .commit();
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.container, mFavouritesFragment, "Favoritos")
+//                .commit();
     }
 
 
@@ -54,10 +51,23 @@ public class MainActivity extends ActionBarActivity
         // update the main content by replacing fragments
         Toast.makeText(this, "Menu item selected -> " + position, Toast.LENGTH_SHORT).show();
 
-        if (position == 1) {
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.container, mFavouriteFragment2, "Favoritos2")
-                    .commit();
+        //Fragmentos
+        mFavouritesFragment = new FavouritesFragment();
+        mFavouritesFragment2 = new FavouritesFragment2();
+
+        switch (position) {
+            case 1:
+            case 2:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, mFavouritesFragment2, "Favoritos2")
+                        .commit();
+                break;
+
+            default:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, mFavouritesFragment, "Favoritos")
+                        .commit();
+
         }
     }
 
@@ -100,13 +110,4 @@ public class MainActivity extends ActionBarActivity
     }
 
 
-    @Override
-    public void onFragmentInteraction(String id) {
-        System.out.println("El id es:" + id);
-    }
-
-    @Override
-    public void onFragmentInteraction2(String id) {
-        System.out.println("El id es:" + id);
-    }
 }
