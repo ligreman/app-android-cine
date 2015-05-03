@@ -8,14 +8,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerCallbacks;
+import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerFragment;
+import com.ligresoftware.queechanenelcine.fragments.FavouriteFragment;
+import com.ligresoftware.queechanenelcine.fragments.FavouriteFragment2;
+
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerCallbacks {
+        implements NavigationDrawerCallbacks, FavouriteFragment.OnFragmentInteractionListener, FavouriteFragment2.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
+    private FavouriteFragment mFavouriteFragment;
+    private FavouriteFragment2 mFavouriteFragment2;
     private Toolbar mToolbar;
 
     @Override
@@ -30,12 +37,28 @@ public class MainActivity extends ActionBarActivity
 
         // Set up the drawer.
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
+
+        //Fragmentos
+        mFavouriteFragment = new FavouriteFragment();
+        mFavouriteFragment2 = new FavouriteFragment2();
+
+        //Coloco este fragmento
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, mFavouriteFragment, "Favoritos")
+                .commit();
     }
+
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         Toast.makeText(this, "Menu item selected -> " + position, Toast.LENGTH_SHORT).show();
+
+        if (position == 1) {
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container, mFavouriteFragment2, "Favoritos2")
+                    .commit();
+        }
     }
 
 
@@ -77,4 +100,13 @@ public class MainActivity extends ActionBarActivity
     }
 
 
+    @Override
+    public void onFragmentInteraction(String id) {
+        System.out.println("El id es:" + id);
+    }
+
+    @Override
+    public void onFragmentInteraction2(String id) {
+        System.out.println("El id es:" + id);
+    }
 }
