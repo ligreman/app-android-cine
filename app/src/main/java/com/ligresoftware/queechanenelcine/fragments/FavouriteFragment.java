@@ -1,20 +1,24 @@
 package com.ligresoftware.queechanenelcine.fragments;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.ListFragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.ligresoftware.queechanenelcine.AddFavouriteActivity;
+import com.ligresoftware.queechanenelcine.Constants;
 import com.ligresoftware.queechanenelcine.R;
-
 import com.ligresoftware.queechanenelcine.fragments.dummy.DummyContent;
+import com.ligresoftware.queechanenelcine.utils.Logger;
 
 /**
  * A fragment representing a list of Items.
- * <p>
- * <p>
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
@@ -62,6 +66,24 @@ public class FavouriteFragment extends ListFragment {
                 android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS));
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_favourite, container, false);
+
+        //Listener de botones
+        FloatingActionButton addFavButton = (FloatingActionButton) view.findViewById(R.id.btn_add_favourite);
+        addFavButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Inicio la actividad de añadir favoritos
+                Intent i = new Intent(getActivity(), AddFavouriteActivity.class);
+                startActivityForResult(i, Constants.REQUEST_CODE_ADD_FAVOURITES);
+            }
+        });
+
+        return view;
+    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -96,7 +118,7 @@ public class FavouriteFragment extends ListFragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
@@ -106,4 +128,14 @@ public class FavouriteFragment extends ListFragment {
         public void onFragmentInteraction(String id);
     }
 
+    // Espero la respuesta de la Actividad
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK && requestCode == Constants.REQUEST_CODE_ADD_FAVOURITES) {
+            Logger.d("VUELVO2", "Vengo de añadir favoritos2");
+        } else {
+        }
+    }
 }

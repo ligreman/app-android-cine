@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerCallbacks;
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerFragment;
+import com.ligresoftware.queechanenelcine.fragments.CustomFab;
 import com.ligresoftware.queechanenelcine.fragments.FavouriteFragment;
 import com.ligresoftware.queechanenelcine.fragments.FavouriteFragment2;
 
@@ -23,6 +24,7 @@ public class MainActivity extends ActionBarActivity
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private FavouriteFragment mFavouriteFragment;
     private FavouriteFragment2 mFavouriteFragment2;
+    private CustomFab mCustomFab;
     private Toolbar mToolbar;
 
     @Override
@@ -45,7 +47,6 @@ public class MainActivity extends ActionBarActivity
 //                .commit();
     }
 
-
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
@@ -54,11 +55,17 @@ public class MainActivity extends ActionBarActivity
         //Fragmentos
         mFavouriteFragment = new FavouriteFragment();
         mFavouriteFragment2 = new FavouriteFragment2();
+        mCustomFab = new CustomFab();
 
         switch (position) {
             case 1:
                 getFragmentManager().beginTransaction()
                         .replace(R.id.container, mFavouriteFragment2, "Favoritos2")
+                        .commit();
+                break;
+            case 2:
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.container, mCustomFab, "Custom")
                         .commit();
                 break;
             default:
