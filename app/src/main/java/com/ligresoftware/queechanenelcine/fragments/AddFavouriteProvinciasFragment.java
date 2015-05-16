@@ -1,20 +1,25 @@
 package com.ligresoftware.queechanenelcine.fragments;
 
-import android.app.Fragment;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.ligresoftware.queechanenelcine.R;
+import com.ligresoftware.queechanenelcine.adapters.ProvinciasAdapter;
+import com.ligresoftware.queechanenelcine.models.Provincia;
 import com.ligresoftware.queechanenelcine.models.helpers.ProvinciaList;
 import com.ligresoftware.queechanenelcine.utils.ProvinciaUtils;
 
+import java.util.List;
 
-/**
- * A placeholder fragment containing a simple view.
- */
-public class AddFavouriteProvinciasFragment extends Fragment {
+
+public class AddFavouriteProvinciasFragment extends ListFragment {
+    private List provincias;
+    private OnAddFavouriteProvinciasFragmentInteractionListener mListener;
 
     public AddFavouriteProvinciasFragment() {
     }
@@ -23,16 +28,6 @@ public class AddFavouriteProvinciasFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-//        setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-//                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS));
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_favourite_provincias, container, false);
-
         System.out.println("Cojo las provincias");
         ProvinciaUtils pUtils = new ProvinciaUtils();
         pUtils.setmCallback(new ProvinciaUtils.ProvinciaUtilsCallback() {
@@ -40,11 +35,53 @@ public class AddFavouriteProvinciasFragment extends Fragment {
             @Override
             public void onGetProvinciasFinished(ProvinciaList listaProvincias) {
                 System.out.println("  TOTAL  " + listaProvincias.getProvincias().size());
+
+                provincias = listaProvincias.getProvincias();
+
+//                Provincia dd = (Provincia) provincias.get(0);
+//                Logger.d("PROVINCIA", dd.getNombre() + " " + dd.get_id());
+
+                setListAdapter(new ProvinciasAdapter(getActivity(), provincias));
             }
         });
+        //Lanzo la obtención del listado de provincias
         pUtils.getProvincias();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_add_favourite_provincias, container, false);
 
         return view;
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (OnAddFavouriteProvinciasFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement OnAddFavouriteProvinciasFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        if (mListener != null) {
+            mListener.onProvinciasFragmentInteraction((Provincia) this.provincias.get(position));
+        }
+    }
+
+    //Para comunicarse con la actividad
+    public interface OnAddFavouriteProvinciasFragmentInteractionListener {
+        public void onProvinciasFragmentInteraction(Provincia provinciaSelected);
+    }
 }

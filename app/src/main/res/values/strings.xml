@@ -6,4 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_favourite">AddFavouriteActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="provincias">Provincias</string>
+    <string name="ciudades">Ciudades</string>
+    <string name="fav_cine">Añadir cines a favoritos</string>
 </resources>

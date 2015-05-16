@@ -3,7 +3,6 @@ package com.ligresoftware.queechanenelcine.utils;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
-import com.ligresoftware.queechanenelcine.models.Provincia;
 import com.ligresoftware.queechanenelcine.models.helpers.ProvinciaList;
 
 public class ProvinciaUtils {
@@ -22,9 +21,9 @@ public class ProvinciaUtils {
                             Gson gson = new Gson();
                             ProvinciaList provinciasGson = gson.fromJson(json, ProvinciaList.class);
 
-                            for (Provincia provincia : provinciasGson.getProvincias()) {
+//                            for (Provincia provincia : provinciasGson.getProvincias()) {
 //                                System.out.println("  -  " + provincia.getNombre());
-                            }
+//                            }
 
                             return provinciasGson;
                         } catch (Exception e) {
@@ -36,14 +35,6 @@ public class ProvinciaUtils {
                     @Override
                     protected void onCancelled() {
                         super.onCancelled();
-                    }
-
-                    @Override
-                    protected void onProgressUpdate(Integer... values) {
-//                        super.onProgressUpdate(values);
-                        for (Integer valor : values) {
-                            System.out.println("UPDATE: " + valor);
-                        }
                     }
 
                     @Override

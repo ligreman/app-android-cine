@@ -22,15 +22,16 @@ public class MainActivity extends ActionBarActivity
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
-    private FavouriteFragment mFavouriteFragment;
-    private FavouriteFragment2 mFavouriteFragment2;
-    private CustomFab mCustomFab;
+    private FavouriteFragment mFavouriteFragment = new FavouriteFragment();
+    private FavouriteFragment2 mFavouriteFragment2 = new FavouriteFragment2();
+    private CustomFab mCustomFab = new CustomFab();
     private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
 
@@ -40,11 +41,13 @@ public class MainActivity extends ActionBarActivity
         // Set up the drawer.
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
 
-
-        //Coloco este fragmento
-//        getFragmentManager().beginTransaction()
-//                .replace(R.id.container, mFavouriteFragment, "Favoritos")
-//                .commit();
+        //Coloco el primero
+        if (savedInstanceState == null) {
+            //Pongo el inicial
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container, mFavouriteFragment, "Favoritos")
+                    .commit();
+        }
     }
 
     @Override
@@ -52,11 +55,7 @@ public class MainActivity extends ActionBarActivity
         // update the main content by replacing fragments
         Toast.makeText(this, "Menu item selected -> " + position, Toast.LENGTH_SHORT).show();
 
-        //Fragmentos
-        mFavouriteFragment = new FavouriteFragment();
-        mFavouriteFragment2 = new FavouriteFragment2();
-        mCustomFab = new CustomFab();
-
+        //Según la position muestro uno u otro fragmento
         switch (position) {
             case 1:
                 getFragmentManager().beginTransaction()

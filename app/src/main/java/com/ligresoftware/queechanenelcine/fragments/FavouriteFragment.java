@@ -132,8 +132,10 @@ public class FavouriteFragment extends ListFragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == Activity.RESULT_OK && requestCode == Constants.REQUEST_CODE_ADD_FAVOURITES) {
-            Logger.d("VUELVO2", "Vengo de añadir favoritos2");
-        } else {
+            Logger.d("VUELVO1", "Vengo de añadir favoritos correctamente");
+        } else if (resultCode == Activity.RESULT_CANCELED && requestCode == Constants.REQUEST_CODE_ADD_FAVOURITES) {
+            //No he hecho nada, así que no tengo que hacer nada
+            Logger.d("VUELVO2", "Vengo de no hacer cambios");
         }
     }
 }

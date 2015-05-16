@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class Cine {
     private String _id;
     private String cineId;
-    private String _idCiudad;
     private String nombre;
+    private String _idCiudad;
+    private String nombreciudad;
     private String direccion;
     private Integer codigoPostal;
     private String telefono;
@@ -38,6 +39,14 @@ public class Cine {
 
     public void set_idCiudad(String _idCiudad) {
         this._idCiudad = _idCiudad;
+    }
+
+    public String getNombreciudad() {
+        return nombreciudad;
+    }
+
+    public void setNombreciudad(String nombreciudad) {
+        this.nombreciudad = nombreciudad;
     }
 
     public String getNombre() {
