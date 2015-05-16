@@ -3,6 +3,7 @@ package com.ligresoftware.queechanenelcine.utils;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
+import com.ligresoftware.queechanenelcine.R;
 import com.ligresoftware.queechanenelcine.models.Ciudad;
 import com.ligresoftware.queechanenelcine.models.helpers.CineList;
 
@@ -57,5 +58,14 @@ public class CineUtils {
 
     public interface CineUtilsCallback {
         void onGetCinesFinished(CineList listaCines);
+    }
+
+    //Métodos estáticos
+    public static int getCineFavouritedResource(boolean status) {
+        if (status) {
+            return R.drawable.ic_favorite_black_36dp;
+        } else {
+            return R.drawable.ic_favorite_outline_black_36dp;
+        }
     }
 }

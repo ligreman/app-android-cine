@@ -26,7 +26,7 @@
         android:layout_gravity="bottom|right"
         fab:fab_colorNormal="@color/myAccentColor"
         fab:fab_colorPressed="@color/myAccentColorPressed"
-        fab:fab_icon="@drawable/fab_ic_add" />
+        fab:fab_icon="@drawable/ic_add_white_48dp" />
 
     <ProgressBar
         android:id="@+id/progressBar"

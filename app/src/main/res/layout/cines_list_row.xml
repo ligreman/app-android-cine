@@ -4,40 +4,34 @@
     android:layout_height="75dp"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/cinesRowName"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:gravity="right"
-        android:orientation="horizontal">
+        android:layout_toLeftOf="@+id/cinesFavouritedCheck"
+        android:layout_weight="8"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxWidth="80dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:shadowColor="#ffffffff"
+        android:singleLine="true"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TextView
-            android:id="@+id/cinesRowName"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_weight="8"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:shadowColor="#ffffffff"
-            android:singleLine="true"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/cinesFavouritedCheck"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:cropToPadding="true"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:src="@drawable/abc_btn_check_to_on_mtrl_000" />
-    </LinearLayout>
-
+    <ImageView
+        android:id="@+id/cinesFavouritedCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_weight="1"
+        android:cropToPadding="true"
+        android:minWidth="60dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:src="@drawable/ic_favorite_outline_black_36dp"
+        android:tint="@color/myAccentColor" />
 </RelativeLayout>

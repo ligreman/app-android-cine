@@ -1,11 +1,13 @@
 package com.ligresoftware.queechanenelcine.fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.ligresoftware.queechanenelcine.Constants;
@@ -13,8 +15,10 @@ import com.ligresoftware.queechanenelcine.R;
 import com.ligresoftware.queechanenelcine.adapters.CinesAdapter;
 import com.ligresoftware.queechanenelcine.models.Cine;
 import com.ligresoftware.queechanenelcine.models.Ciudad;
+import com.ligresoftware.queechanenelcine.models.FavoritoList;
 import com.ligresoftware.queechanenelcine.models.helpers.CineList;
 import com.ligresoftware.queechanenelcine.utils.CineUtils;
+import com.ligresoftware.queechanenelcine.utils.SharedPreferencesUtils;
 
 import java.util.List;
 
@@ -22,6 +26,7 @@ import java.util.List;
 public class AddFavouriteCinesFragment extends ListFragment {
     private List cines;
     private OnAddFavouriteCinesFragmentInteractionListener mListener;
+    private Context mContext;
 
     public AddFavouriteCinesFragment() {
     }
@@ -29,6 +34,7 @@ public class AddFavouriteCinesFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = getActivity();
 
         //Cojo la ciudad que me han pasado
         Ciudad ciudadSelected = getArguments().getParcelable(Constants.PARCELABLE_CIUDAD);
@@ -46,7 +52,8 @@ public class AddFavouriteCinesFragment extends ListFragment {
 //                Logger.d("PROVINCIA", dd.getNombre() + " " + dd.get_id());
 
                 //La pongo en la lista
-                setListAdapter(new CinesAdapter(getActivity(), cines));
+                FavoritoList fl = SharedPreferencesUtils.getListaFavoritos(mContext);
+                setListAdapter(new CinesAdapter(mContext, cines, fl));
             }
         });
 
@@ -82,13 +89,13 @@ public class AddFavouriteCinesFragment extends ListFragment {
         super.onListItemClick(l, v, position, id);
 
         if (mListener != null) {
-            mListener.onCinesFragmentInteractionSelectCine((Cine) this.cines.get(position));
+            mListener.onCinesFragmentInteractionSelectCine((Cine) this.cines.get(position), (ImageView) v.findViewById(R.id.cinesFavouritedCheck));
         }
     }
 
     //Para comunicarse con la actividad
     public interface OnAddFavouriteCinesFragmentInteractionListener {
-        public void onCinesFragmentInteractionSelectCine(Cine cineSelected);
+        public void onCinesFragmentInteractionSelectCine(Cine cineSelected, ImageView imageView);
 
         public void onCinesFragmentInteractionFinish();
     }
