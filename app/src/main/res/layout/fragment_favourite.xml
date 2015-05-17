@@ -5,17 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@id/android:list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <com.ligresoftware.queechanenelcine.components.PinnedSectionListView
+        android:id="@+id/favoritosListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="1dp" />
 
-    <TextView
+    <!--<TextView
         android:id="@id/android:empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FF0000"
-        android:text="No data" />
+        android:text="No data" />-->
 
     <com.getbase.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_favourite"
@@ -28,13 +29,5 @@
         fab:fab_colorPressed="@color/myAccentColorPressed"
         fab:fab_icon="@drawable/ic_add_white_48dp" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:nestedScrollingEnabled="true"
-        android:visibility="invisible" />
 
 </RelativeLayout>

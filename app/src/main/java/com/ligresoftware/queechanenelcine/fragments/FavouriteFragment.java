@@ -1,74 +1,46 @@
 package com.ligresoftware.queechanenelcine.fragments;
 
 import android.app.Activity;
-import android.app.ListFragment;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.AdapterView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.ligresoftware.queechanenelcine.AddFavouriteActivity;
 import com.ligresoftware.queechanenelcine.Constants;
 import com.ligresoftware.queechanenelcine.R;
-import com.ligresoftware.queechanenelcine.fragments.dummy.DummyContent;
+import com.ligresoftware.queechanenelcine.adapters.FavoritosAdapter;
+import com.ligresoftware.queechanenelcine.adapters.FavoritosAdapterHolder;
+import com.ligresoftware.queechanenelcine.components.PinnedSectionListView;
 import com.ligresoftware.queechanenelcine.utils.Logger;
+import com.ligresoftware.queechanenelcine.utils.SharedPreferencesUtils;
 
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
- * interface.
- */
-public class FavouriteFragment extends ListFragment {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+public class FavouriteFragment extends Fragment {
+    private FavoritosAdapter adaptador;
     private OnFragmentInteractionListener mListener;
 
-    // TODO: Rename and change types of parameters
-    public static FavouriteFragment newInstance(String param1, String param2) {
-        FavouriteFragment fragment = new FavouriteFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
     public FavouriteFragment() {
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-        // TODO: Change Adapter to display your content
-        setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS));
+        Logger.d("FAV FRAGMENT", "onCreate");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        return super.onCreateView(inflater, container, savedInstanceState);
+        Logger.d("FAV FRAGMENT", "onCreateView");
         View view = inflater.inflate(R.layout.fragment_favourite, container, false);
 
         //Listener de botones
@@ -82,7 +54,63 @@ public class FavouriteFragment extends ListFragment {
             }
         });
 
+        //Listener de eventos en la lista pined
+        PinnedSectionListView mFavoritosListView = (PinnedSectionListView) view.findViewById(R.id.favoritosListView);
+        mFavoritosListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long type) {
+                if (type == FavoritosAdapter.TYPE_ITEM) {
+                    Logger.d("Lista Favoritos", "He pinchao en item " + type + " posicion " + position);
+                    FavoritosAdapterHolder selected = (FavoritosAdapterHolder) adaptador.getItem(position);
+
+                    Logger.d("SELECCIONA", "Cine " + selected.getTitulo() + " / " + selected.getId());
+                }
+            }
+        });
+
+        //Pongo el adaptador a la lista
+        adaptador = new FavoritosAdapter(this.getActivity());
+        mFavoritosListView.setAdapter(adaptador);
+        populateAdapter();
+
         return view;
+    }
+
+    private void populateAdapter() {
+        ArrayList<FavoritosAdapterHolder> listDataHolder = new ArrayList<>();
+        HashMap matrix = SharedPreferencesUtils.getMatrixCiudadesCines(this.getActivity());
+        FavoritosAdapterHolder fah;
+
+        Logger.d("POPULO", "Tengo estos elementos " + matrix.size());
+
+        //Recorro la estructura creando los elementos de mi lista
+        if (matrix != null) {
+            /*for (Object entry : matrix.keySet()) {
+                Pair<String, String> key = (Pair<String, String>) entry;
+
+                List<Pair<String, String>> cines = (List<Pair<String, String>>) matrix.get(key);
+
+            }*/
+
+            for (Object obj : matrix.entrySet()) {
+                Map.Entry item = (Map.Entry) obj;
+                Pair<String, String> key = (Pair<String, String>) item.getKey();
+                List<Pair<String, String>> cines = (List<Pair<String, String>>) item.getValue();
+
+                //Creo la cabecera (Pair<idCiudad, nombreCiudad>)
+                fah = new FavoritosAdapterHolder(key.second, key.first, FavoritosAdapter.TYPE_HEADER);
+                listDataHolder.add(fah);
+
+                //Creo los elementos de esta ciudad
+                for (Pair<String, String> cine : cines) {
+                    fah = new FavoritosAdapterHolder(cine.second, cine.first, FavoritosAdapter.TYPE_ITEM);
+                    listDataHolder.add(fah);
+                }
+            }
+        }
+
+
+        adaptador.updateAdapter(listDataHolder);
     }
 
     @Override
@@ -99,17 +127,6 @@ public class FavouriteFragment extends ListFragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-
-        if (null != mListener) {
-            // Notify the active callbacks interface (the activity, if the
-            // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
-        }
     }
 
     /**

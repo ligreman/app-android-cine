@@ -10,21 +10,17 @@ import android.widget.Toast;
 
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerCallbacks;
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerFragment;
-import com.ligresoftware.queechanenelcine.fragments.CustomFab;
 import com.ligresoftware.queechanenelcine.fragments.FavouriteFragment;
-import com.ligresoftware.queechanenelcine.fragments.FavouriteFragment2;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerCallbacks, FavouriteFragment.OnFragmentInteractionListener, FavouriteFragment2.OnFragmentInteractionListener {
+        implements NavigationDrawerCallbacks, FavouriteFragment.OnFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private FavouriteFragment mFavouriteFragment = new FavouriteFragment();
-    private FavouriteFragment2 mFavouriteFragment2 = new FavouriteFragment2();
-    private CustomFab mCustomFab = new CustomFab();
     private Toolbar mToolbar;
 
     @Override
@@ -58,14 +54,14 @@ public class MainActivity extends ActionBarActivity
         //Según la position muestro uno u otro fragmento
         switch (position) {
             case 1:
-                getFragmentManager().beginTransaction()
+                /*getFragmentManager().beginTransaction()
                         .replace(R.id.container, mFavouriteFragment2, "Favoritos2")
-                        .commit();
+                        .commit();*/
                 break;
             case 2:
-                getFragmentManager().beginTransaction()
+                /*getFragmentManager().beginTransaction()
                         .replace(R.id.container, mCustomFab, "Custom")
-                        .commit();
+                        .commit();*/
                 break;
             default:
                 getFragmentManager().beginTransaction()
@@ -118,8 +114,4 @@ public class MainActivity extends ActionBarActivity
         System.out.println("El id es:" + id);
     }
 
-    @Override
-    public void onFragmentInteraction2(String id) {
-        System.out.println("El id es:" + id);
-    }
 }

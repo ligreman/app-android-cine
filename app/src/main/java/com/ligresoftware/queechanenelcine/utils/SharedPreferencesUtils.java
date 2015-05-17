@@ -2,10 +2,16 @@ package com.ligresoftware.queechanenelcine.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Pair;
 
 import com.google.gson.Gson;
 import com.ligresoftware.queechanenelcine.Constants;
+import com.ligresoftware.queechanenelcine.models.Favorito;
 import com.ligresoftware.queechanenelcine.models.FavoritoList;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class SharedPreferencesUtils {
     public static FavoritoList getListaFavoritos(Context context) {
@@ -35,5 +41,39 @@ public class SharedPreferencesUtils {
 
         editor.putString(Constants.SHARED_LISTA_FAVORITOS, newLista);
         editor.commit();
+    }
+
+    public static HashMap getMatrixCiudadesCines(Context context) {
+        //Cojo los favoritos del Shared
+        FavoritoList mFavoritoListHelper = getListaFavoritos(context);
+
+        if (mFavoritoListHelper == null) {
+            return null;
+        }
+
+        //Creo una estructura que asocie ciudad con cines
+        HashMap<Pair<String, String>, List<Pair<String, String>>> matrix = new HashMap<>();
+
+        //Recorro los favoritos guardados para poblar la estructura
+        for (Favorito fav : mFavoritoListHelper.getListaFavoritos()) {
+            //Saco los pares
+            Pair<String, String> ciudad = new Pair<>(fav.getIdCiudad(), fav.getNombreCiudad());
+            Pair<String, String> cine = new Pair<>(fav.getIdCine(), fav.getNombreCine());
+
+            //Añado a mi matrix, pero primero miro a ver si ya existe
+            if (matrix.containsKey(ciudad)) {
+                //Añado a la lista
+                List listaCines = matrix.get(ciudad);
+                listaCines.add(cine);
+                matrix.put(ciudad, listaCines);
+            } else {
+                //Creo una lista para añadir
+                List<Pair<String, String>> listaCines = new ArrayList<>();
+                listaCines.add(cine);
+                matrix.put(ciudad, listaCines);
+            }
+        }
+
+        return matrix;
     }
 }
