@@ -11,4 +11,6 @@ public class Constants {
     public static final String PARCELABLE_CIUDAD = "PARCELABLE_CIUDAD";
     public static final String SHARED_FILE_FAVORITOS = "SHARED_FILE_FAVORITOS";
     public static final String SHARED_LISTA_FAVORITOS = "SHARED_LISTA_FAVORITOS";
+    public static final String EXTRA_CINE_ID = "EXTRA_CINE_ID";
+    public static final String EXTRA_CINE_NAME = "EXTRA_CINE_NAME";
 }

@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.ligresoftware.queechanenelcine.AddFavouriteActivity;
+import com.ligresoftware.queechanenelcine.CineDetailActivity;
 import com.ligresoftware.queechanenelcine.Constants;
 import com.ligresoftware.queechanenelcine.R;
 import com.ligresoftware.queechanenelcine.adapters.FavoritosAdapter;
@@ -27,7 +28,7 @@ import java.util.Map;
 
 public class FavouriteFragment extends Fragment {
     private FavoritosAdapter adaptador;
-    private OnFragmentInteractionListener mListener;
+    private OnFavouriteFragmentInteractionListener mListener;
 
     public FavouriteFragment() {
     }
@@ -64,6 +65,11 @@ public class FavouriteFragment extends Fragment {
                     FavoritosAdapterHolder selected = (FavoritosAdapterHolder) adaptador.getItem(position);
 
                     Logger.d("SELECCIONA", "Cine " + selected.getTitulo() + " / " + selected.getId());
+                    //Llamo a la actividad de CineDetail pasándole los datos del Cine (el id y el nombre)
+                    Intent intent = new Intent(getActivity(), CineDetailActivity.class);
+                    intent.putExtra(Constants.EXTRA_CINE_ID, selected.getId());
+                    intent.putExtra(Constants.EXTRA_CINE_NAME, selected.getTitulo());
+                    startActivity(intent);
                 }
             }
         });
@@ -85,13 +91,6 @@ public class FavouriteFragment extends Fragment {
 
         //Recorro la estructura creando los elementos de mi lista
         if (matrix != null) {
-            /*for (Object entry : matrix.keySet()) {
-                Pair<String, String> key = (Pair<String, String>) entry;
-
-                List<Pair<String, String>> cines = (List<Pair<String, String>>) matrix.get(key);
-
-            }*/
-
             for (Object obj : matrix.entrySet()) {
                 Map.Entry item = (Map.Entry) obj;
                 Pair<String, String> key = (Pair<String, String>) item.getKey();
@@ -117,9 +116,9 @@ public class FavouriteFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnFragmentInteractionListener) activity;
+            mListener = (OnFavouriteFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString() + " must implement OnFragmentInteractionListener");
+            throw new ClassCastException(activity.toString() + " must implement OnFavouriteFragmentInteractionListener");
         }
     }
 
@@ -138,21 +137,18 @@ public class FavouriteFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+    public interface OnFavouriteFragmentInteractionListener {
         public void onFragmentInteraction(String id);
     }
 
-    // Espero la respuesta de la Actividad
+    // Espero la respuesta de la Actividad de añadir favoritos
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        //Al volver recargo los favoritos
         if (resultCode == Activity.RESULT_OK && requestCode == Constants.REQUEST_CODE_ADD_FAVOURITES) {
-            Logger.d("VUELVO1", "Vengo de añadir favoritos correctamente");
-        } else if (resultCode == Activity.RESULT_CANCELED && requestCode == Constants.REQUEST_CODE_ADD_FAVOURITES) {
-            //No he hecho nada, así que no tengo que hacer nada
-            Logger.d("VUELVO2", "Vengo de no hacer cambios");
+            populateAdapter();
         }
     }
 }

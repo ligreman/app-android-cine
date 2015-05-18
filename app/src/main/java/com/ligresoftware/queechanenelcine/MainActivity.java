@@ -14,7 +14,7 @@ import com.ligresoftware.queechanenelcine.fragments.FavouriteFragment;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerCallbacks, FavouriteFragment.OnFragmentInteractionListener {
+        implements NavigationDrawerCallbacks, FavouriteFragment.OnFavouriteFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.

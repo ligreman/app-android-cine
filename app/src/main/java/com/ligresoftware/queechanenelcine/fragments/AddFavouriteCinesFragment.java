@@ -55,6 +55,10 @@ public class AddFavouriteCinesFragment extends ListFragment {
                 FavoritoList fl = SharedPreferencesUtils.getListaFavoritos(mContext);
                 setListAdapter(new CinesAdapter(mContext, cines, fl));
             }
+
+            @Override
+            public void onGetCineDetailFinished(Cine cine) {
+            }
         });
 
         //Lanzo la obtención del listado de provincias

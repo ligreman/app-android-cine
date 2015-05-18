@@ -12,4 +12,6 @@
     <string name="tag_favorito">tag_favorito</string>
     <string name="favourite_error_saving">Se produjo un error al guardar el favorito, inténtalo de nuevo.</string>
     <string name="action_finish">Terminar</string>
+    <string name="title_activity_cine_detail">CineDetailActivity</string>
+    <string name="title_activity_pelicula_detail">PeliculaDetailActivity</string>
 </resources>

@@ -154,7 +154,7 @@ public class AddFavouriteActivity extends ActionBarActivity
         //Según sea el nuevo estado quiero añadir o quitar de favoritos
         if (esFavorito) {
             //Quiero añadirlo
-            lista.addFavorito(cineSelected.get_idCiudad(), cineSelected.getNombreciudad(), cineSelected.get_id(), cineSelected.getNombre());
+            lista.addFavorito(cineSelected.get_idCiudad(), cineSelected.getNombreCiudad(), cineSelected.get_id(), cineSelected.getNombre());
         } else {
             //Quiero quitarlo
             lista.removeFavorito(cineSelected.get_id());

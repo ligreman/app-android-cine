@@ -7,7 +7,7 @@ public class Cine {
     private String cineId;
     private String nombre;
     private String _idCiudad;
-    private String nombreciudad;
+    private String nombreCiudad;
     private String direccion;
     private Integer codigoPostal;
     private String telefono;
@@ -41,12 +41,12 @@ public class Cine {
         this._idCiudad = _idCiudad;
     }
 
-    public String getNombreciudad() {
-        return nombreciudad;
+    public String getNombreCiudad() {
+        return nombreCiudad;
     }
 
-    public void setNombreciudad(String nombreciudad) {
-        this.nombreciudad = nombreciudad;
+    public void setNombreCiudad(String nombreCiudad) {
+        this.nombreCiudad = nombreCiudad;
     }
 
     public String getNombre() {
