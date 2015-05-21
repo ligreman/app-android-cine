@@ -11,10 +11,16 @@
         android:layout_height="wrap_content" />
 
     <TextView
+        android:id="@+id/blablabla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world"
         android:layout_below="@+id/toolbar_actionbar_cine_detail"
-        android:id="@+id/blablabla" />
+        android:text="@string/hello_world" />
+
+    <ListView
+        android:id="@+id/listaCineDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/blablabla" />
 
 </RelativeLayout>

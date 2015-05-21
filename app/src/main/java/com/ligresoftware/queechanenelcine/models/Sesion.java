@@ -1,8 +1,11 @@
 package com.ligresoftware.queechanenelcine.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Sesion {
+public class Sesion implements Parcelable {
     private String _idPelicula;
     private String peliculaId;
     private ArrayList<String> horarios;
@@ -147,4 +150,61 @@ public class Sesion {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this._idPelicula);
+        dest.writeString(this.peliculaId);
+        dest.writeSerializable(this.horarios);
+        dest.writeString(this.titulo);
+        dest.writeString(this.tituloOriginal);
+        dest.writeString(this.estreno);
+        dest.writeValue(this.anno);
+        dest.writeValue(this.duracion);
+        dest.writeSerializable(this.pais);
+        dest.writeSerializable(this.genero);
+        dest.writeSerializable(this.estudio);
+        dest.writeString(this.sinopsis);
+        dest.writeSerializable(this.director);
+        dest.writeSerializable(this.reparto);
+        dest.writeSerializable(this.repartoExtendido);
+        dest.writeString(this.imagen);
+    }
+
+    public Sesion() {
+    }
+
+    private Sesion(Parcel in) {
+        this._idPelicula = in.readString();
+        this.peliculaId = in.readString();
+        this.horarios = (ArrayList<String>) in.readSerializable();
+        this.titulo = in.readString();
+        this.tituloOriginal = in.readString();
+        this.estreno = in.readString();
+        this.anno = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.duracion = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.pais = (ArrayList<String>) in.readSerializable();
+        this.genero = (ArrayList<String>) in.readSerializable();
+        this.estudio = (ArrayList<String>) in.readSerializable();
+        this.sinopsis = in.readString();
+        this.director = (ArrayList<String>) in.readSerializable();
+        this.reparto = (ArrayList<String>) in.readSerializable();
+        this.repartoExtendido = (ArrayList<String>) in.readSerializable();
+        this.imagen = in.readString();
+    }
+
+    public static final Parcelable.Creator<Sesion> CREATOR = new Parcelable.Creator<Sesion>() {
+        public Sesion createFromParcel(Parcel source) {
+            return new Sesion(source);
+        }
+
+        public Sesion[] newArray(int size) {
+            return new Sesion[size];
+        }
+    };
 }
