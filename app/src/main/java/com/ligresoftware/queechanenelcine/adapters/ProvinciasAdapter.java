@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.ligresoftware.queechanenelcine.R;
 import com.ligresoftware.queechanenelcine.models.Provincia;
+import com.ligresoftware.queechanenelcine.utils.Logger;
 
 import java.io.IOException;
 import java.util.List;
@@ -50,7 +51,9 @@ public class ProvinciasAdapter extends ArrayAdapter {
         //Relleno los datos
         holder.provinciaName.setText(item.getNombre());
         try {
-            holder.provinciaFondo.setImageDrawable(Drawable.createFromStream(getContext().getAssets().open("wallpaper.png"), null));
+            String imagen = item.getNombre().toLowerCase();
+            Logger.w("Provincia: ", imagen);
+            holder.provinciaFondo.setImageDrawable(Drawable.createFromStream(getContext().getAssets().open("wallpaper.jpg"), null));
         } catch (IOException e) {
             e.printStackTrace();
         }

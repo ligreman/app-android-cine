@@ -29,6 +29,7 @@ import java.util.Map;
 public class FavouriteFragment extends Fragment {
     private FavoritosAdapter adaptador;
     private OnFavouriteFragmentInteractionListener mListener;
+    private PinnedSectionListView mFavoritosListView;
 
     public FavouriteFragment() {
     }
@@ -56,7 +57,7 @@ public class FavouriteFragment extends Fragment {
         });
 
         //Listener de eventos en la lista pined
-        PinnedSectionListView mFavoritosListView = (PinnedSectionListView) view.findViewById(R.id.favoritosListView);
+        mFavoritosListView = (PinnedSectionListView) view.findViewById(R.id.favoritosListView);
         mFavoritosListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long type) {
@@ -84,6 +85,7 @@ public class FavouriteFragment extends Fragment {
 
     private void populateAdapter() {
         ArrayList<FavoritosAdapterHolder> listDataHolder = new ArrayList<>();
+
         HashMap matrix = SharedPreferencesUtils.getMatrixCiudadesCines(this.getActivity());
         FavoritosAdapterHolder fah;
 
@@ -98,6 +100,7 @@ public class FavouriteFragment extends Fragment {
 
                 //Creo la cabecera (Pair<idCiudad, nombreCiudad>)
                 fah = new FavoritosAdapterHolder(key.second, key.first, FavoritosAdapter.TYPE_HEADER);
+                Logger.d("HEADER -", "" + key.second);
                 listDataHolder.add(fah);
 
                 //Creo los elementos de esta ciudad
@@ -107,7 +110,6 @@ public class FavouriteFragment extends Fragment {
                 }
             }
         }
-
 
         adaptador.updateAdapter(listDataHolder);
     }
@@ -138,7 +140,7 @@ public class FavouriteFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFavouriteFragmentInteractionListener {
-        public void onFragmentInteraction(String id);
+        public void onFragmentInteraction();
     }
 
     // Espero la respuesta de la Actividad de añadir favoritos
@@ -149,6 +151,7 @@ public class FavouriteFragment extends Fragment {
         //Al volver recargo los favoritos
         if (resultCode == Activity.RESULT_OK && requestCode == Constants.REQUEST_CODE_ADD_FAVOURITES) {
             populateAdapter();
+            mListener.onFragmentInteraction();
         }
     }
 }

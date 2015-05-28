@@ -1,6 +1,8 @@
 package com.ligresoftware.queechanenelcine;
 
+import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +23,7 @@ public class MainActivity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private FavouriteFragment mFavouriteFragment = new FavouriteFragment();
+    private Fragment mEmptyFragment = new Fragment();
     private Toolbar mToolbar;
 
     @Override
@@ -53,16 +56,17 @@ public class MainActivity extends ActionBarActivity
 
         //Según la position muestro uno u otro fragmento
         switch (position) {
-            case 1:
-                /*getFragmentManager().beginTransaction()
-                        .replace(R.id.container, mFavouriteFragment2, "Favoritos2")
-                        .commit();*/
+            case -1:
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.container, mEmptyFragment, "Empty")
+                        .commit();
                 break;
             case 2:
                 /*getFragmentManager().beginTransaction()
                         .replace(R.id.container, mCustomFab, "Custom")
                         .commit();*/
                 break;
+            case 0:
             default:
                 getFragmentManager().beginTransaction()
                         .replace(R.id.container, mFavouriteFragment, "Favoritos")
@@ -110,8 +114,15 @@ public class MainActivity extends ActionBarActivity
 
 
     @Override
-    public void onFragmentInteraction(String id) {
-        System.out.println("El id es:" + id);
+    public void onFragmentInteraction() {
+        //Recreo el fragmento en 1 segundo
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                recreate();
+            }
+        }, 1);
     }
 
 }
