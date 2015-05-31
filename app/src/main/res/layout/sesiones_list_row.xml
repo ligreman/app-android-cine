@@ -1,24 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="75dp"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="10dp">
 
-    <TextView
-        android:id="@+id/sesionesRowTitulo"
-        android:layout_width="fill_parent"
+    <ImageView
+        android:id="@+id/sesionesRowPortada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:gravity="center_vertical"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp"
-        android:shadowColor="#ffffffff"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_toRightOf="@+id/sesionesRowPortada"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/sesionesRowTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Large Text"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sesionesRowDuracion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sesionesRowTitulo"
+            android:text="Large Text" />
+
+        <TextView
+            android:id="@+id/sesionesRowGenero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sesionesRowDuracion"
+            android:text="Large Text" />
+
+        <TextView
+            android:id="@+id/sesionesRowHorarios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sesionesRowGenero"
+            android:text="Large Text" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

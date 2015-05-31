@@ -2,11 +2,13 @@ package com.ligresoftware.queechanenelcine;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -54,7 +56,7 @@ public class CineDetailActivity extends ActionBarActivity {
             }
         });
 
-        //Eventos onclick
+        //Eventos onclick de la lista
         lista = (ListView) findViewById(R.id.listaCineDetail);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -85,14 +87,33 @@ public class CineDetailActivity extends ActionBarActivity {
         cUtils.getCineDetail(_idCine);
     }
 
-    private void populateView(Cine cine) {
-        TextView tt = (TextView) findViewById(R.id.blablabla);
-        tt.setText(cine.getNombreCiudad());
+    private void populateView(final Cine cine) {
+        ((TextView) findViewById(R.id.detailDireccionCine)).setText(cine.getDireccion());
+        ((TextView) findViewById(R.id.detailCiudadCine)).setText(cine.getNombreCiudad() + " - " + cine.getCodigoPostal());
+        ((TextView) findViewById(R.id.detailTelefonoCine)).setText("Tlf." + cine.getTelefono());
+        ((TextView) findViewById(R.id.detailPrecioCine)).setText(cine.getPrecio());
+
+        //Las coordenadas del cine
+        setGoogleMapsCoords(cine.getCoordLatitud(), cine.getCoordLongitud(), cineName);
 
         sesiones = cine.getSesiones();
 
         //El adapter
         lista.setAdapter(new SesionesAdapter(this, sesiones));
+    }
+
+    private void setGoogleMapsCoords(final Float latitude, final Float longitude, final String cineName) {
+        //Evento onclik para abrir google maps
+        ImageView googleMapsOpener = (ImageView) findViewById(R.id.locationGoogleMaps);
+        googleMapsOpener.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String uri = "geo:" + latitude + "," + longitude + "?q=" + latitude + "," + longitude + "(" + cineName + ")";
+                Logger.d("La dire: ", uri);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                startActivity(intent);
+            }
+        });
     }
 
     /*@Override

@@ -10,17 +10,104 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/blablabla"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/divDatosCine"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar_actionbar_cine_detail"
-        android:text="@string/hello_world" />
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp">
+
+        <ImageView
+            android:id="@+id/locationGoogleMaps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_map_black_48dp"
+            android:tint="@color/myAccentColor" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/locationGoogleMaps">
+
+            <!--<TextView
+                android:id="@+id/detailNombreCine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yelmo Cines Los Rosales" />-->
+
+            <TextView
+                android:id="@+id/detailDireccionCine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/detailCiudadCine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/detailDireccionCine"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/detailTelefonoCine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/detailCiudadCine"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/detailPrecioCine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/detailTelefonoCine"
+                android:text="" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/divTitulo"
+        android:layout_below="@+id/divDatosCine"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/carteleraTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/cartelera"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/myPrimaryDarkColor"
+            android:textStyle="bold|italic"
+            android:textAllCaps="false" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_toRightOf="@+id/carteleraTitle"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="@color/myPrimaryDarkColor"
+            android:layout_alignBaseline="@+id/carteleraTitle"></RelativeLayout>
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/listaCineDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/blablabla" />
+        android:layout_below="@+id/divTitulo"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
 
 </RelativeLayout>

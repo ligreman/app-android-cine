@@ -14,4 +14,7 @@
     <string name="action_finish">Terminar</string>
     <string name="title_activity_cine_detail">CineDetailActivity</string>
     <string name="title_activity_pelicula_detail">PeliculaDetailActivity</string>
+    <string name="duracion">Duración</string>
+    <string name="minutos">minutos</string>
+    <string name="cartelera">Cartelera</string>
 </resources>
