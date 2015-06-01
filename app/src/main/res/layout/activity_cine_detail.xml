@@ -15,10 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar_actionbar_cine_detail"
+        android:paddingBottom="5dp"
         android:paddingLeft="10dp"
-        android:paddingTop="10dp"
         android:paddingRight="10dp"
-        android:paddingBottom="5dp">
+        android:paddingTop="10dp">
 
         <ImageView
             android:id="@+id/locationGoogleMaps"
@@ -72,9 +72,9 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/divTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/divTitulo"
         android:layout_below="@+id/divDatosCine"
         android:paddingBottom="5dp">
 
@@ -87,17 +87,16 @@
             android:text="@string/cartelera"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/myPrimaryDarkColor"
-            android:textStyle="bold|italic"
-            android:textAllCaps="false" />
+            android:textStyle="bold|italic" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_toRightOf="@+id/carteleraTitle"
-            android:layout_marginRight="10dp"
+            android:layout_alignBaseline="@+id/carteleraTitle"
             android:layout_marginLeft="5dp"
-            android:background="@color/myPrimaryDarkColor"
-            android:layout_alignBaseline="@+id/carteleraTitle"></RelativeLayout>
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/carteleraTitle"
+            android:background="@color/myPrimaryDarkColor"></RelativeLayout>
     </RelativeLayout>
 
     <ListView

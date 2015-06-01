@@ -1,13 +1,18 @@
 package com.ligresoftware.queechanenelcine;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ligresoftware.queechanenelcine.models.Sesion;
+import com.ligresoftware.queechanenelcine.utils.MyUtils;
 
 
 public class PeliculaDetailActivity extends ActionBarActivity {
@@ -39,9 +44,35 @@ public class PeliculaDetailActivity extends ActionBarActivity {
     }
 
     private void populateView(Sesion sesion) {
-        TextView tv = (TextView) findViewById(R.id.ideito);
-        tv.setText(sesion.getSinopsis());
+        ((TextView) findViewById(R.id.peliculaRowTitulo)).setText(sesion.getTitulo());
+        ((TextView) findViewById(R.id.peliculaRowTituloOriginal)).setText(sesion.getTituloOriginal());
+        ((TextView) findViewById(R.id.peliculaRowDirector)).setText(getString(R.string.director) + " " + MyUtils.implode(sesion.getDirector(), ", "));
+        ((TextView) findViewById(R.id.peliculaRowReparto)).setText(MyUtils.implode(sesion.getReparto(), ", "));
+        ((TextView) findViewById(R.id.peliculaRowDuracion)).setText(MyUtils.implode(sesion.getPais(), ", ") + ". " + getDuracion(sesion.getDuracion()));
+        ((TextView) findViewById(R.id.peliculaRowGenero)).setText(MyUtils.implode(sesion.getGenero(), ", "));
+        ((TextView) findViewById(R.id.peliculaRowEstreno)).setText(getString(R.string.estreno) + " " + sesion.getEstreno());
+        ((TextView) findViewById(R.id.peliculaRowSinopsis)).setText(sesion.getSinopsis());
+        ((TextView) findViewById(R.id.peliculaRowRepartoExtendido)).setText(MyUtils.implode(sesion.getRepartoExtendido(), "\n"));
+        ((TextView) findViewById(R.id.peliculaRowEstudio)).setText(getString(R.string.estudio) + " " + MyUtils.implode(sesion.getEstudio(), ", "));
+        ((TextView) findViewById(R.id.peliculaRowAnno)).setText(getString(R.string.anno) + " " + sesion.getAnno());
 
+        //La imagen
+        String[] partes = sesion.getImagen().split(",");
+        if (partes.length == 2) {
+            byte[] decodedString = Base64.decode(partes[1].getBytes(), Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            ((ImageView) findViewById(R.id.peliculaRowPortada)).setImageBitmap(bitmap);
+        } else {
+            //TODO pongo imagen por defecto
+        }
+    }
+
+    private String getDuracion(Integer duracion) {
+        if (duracion != null) {
+            return duracion.toString() + " " + getString(R.string.minutos);
+        } else {
+            return "";
+        }
     }
 
     /*@Override

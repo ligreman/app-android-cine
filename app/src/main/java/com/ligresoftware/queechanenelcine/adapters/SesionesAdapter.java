@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.ligresoftware.queechanenelcine.R;
 import com.ligresoftware.queechanenelcine.models.Sesion;
+import com.ligresoftware.queechanenelcine.utils.MyUtils;
 
 import java.util.List;
 
@@ -64,8 +65,8 @@ public class SesionesAdapter extends ArrayAdapter {
         //Relleno los datos
         holder.titulo.setText(item.getTitulo());
         holder.duracion.setText(context.getString(R.string.duracion) + " " + item.getDuracion() + " " + context.getString(R.string.minutos));
-        holder.genero.setText(implode(item.getGenero(), ", "));
-        holder.horarios.setText(implode(item.getHorarios(), "  "));
+        holder.genero.setText(MyUtils.implode(item.getGenero(), ", "));
+        holder.horarios.setText(MyUtils.implode(item.getHorarios(), "  "));
 
         return viewToUse;
     }
@@ -79,22 +80,5 @@ public class SesionesAdapter extends ArrayAdapter {
         TextView duracion;
         TextView genero;
         TextView horarios;
-    }
-
-    private String implode(List<String> lista, String concatenador) {
-        StringBuilder sb = new StringBuilder();
-        int cuantos = lista.size();
-        int contador = 1;
-
-        for (String s : lista) {
-            sb.append(s);
-
-            if (contador < cuantos) {
-                sb.append(concatenador);
-            }
-            contador++;
-        }
-
-        return sb.toString();
     }
 }

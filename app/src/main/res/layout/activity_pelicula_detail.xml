@@ -10,12 +10,225 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/ideito"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world"
-        android:layout_below="@+id/toolbar_actionbar_cine_detail"
-        android:inputType="textMultiLine" />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_actionbar_cine_detail">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar_actionbar_cine_detail"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/peliculaRowTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:paddingLeft="10dp"
+                android:text="@string/hello_world"
+                android:textColor="@color/myPrimaryDarkColor"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/peliculaRowTituloOriginal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/peliculaRowTitulo"
+                android:layout_marginBottom="10dp"
+                android:inputType="textMultiLine"
+                android:paddingLeft="10dp"
+                android:text="@string/hello_world"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+            <RelativeLayout
+                android:id="@+id/peliculaRowDivPortada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/peliculaRowTituloOriginal"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="5dp">
+
+                <ImageView
+                    android:id="@+id/peliculaRowPortada"
+                    android:layout_width="120dp"
+                    android:layout_height="173dp"
+                    android:layout_marginRight="5dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/peliculaRowPortada">
+
+                    <TextView
+                        android:id="@+id/peliculaRowDirector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Medium Text" />
+
+                    <TextView
+                        android:id="@+id/peliculaRowReparto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/peliculaRowDirector"
+                        android:layout_marginBottom="3dp"
+                        android:text="Medium Text" />
+
+                    <TextView
+                        android:id="@+id/peliculaRowDuracion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/peliculaRowReparto"
+                        android:layout_marginBottom="3dp"
+                        android:text="Medium Text" />
+
+                    <TextView
+                        android:id="@+id/peliculaRowGenero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/peliculaRowDuracion"
+                        android:layout_marginBottom="3dp"
+                        android:text="Medium Text" />
+
+                    <TextView
+                        android:id="@+id/peliculaRowEstreno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/peliculaRowGenero"
+                        android:layout_marginBottom="3dp"
+                        android:text="Medium Text" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/divSinopsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/peliculaRowDivPortada"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/SinopsisTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sinopsis"
+                    android:textColor="@color/myPrimaryDarkColor"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignBaseline="@+id/SinopsisTitle"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/SinopsisTitle"
+                    android:background="@color/myPrimaryDarkColor"></RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/peliculaRowSinopsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divSinopsis"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="10dp"
+                android:text="Lorem im"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                android:id="@+id/divReparto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/peliculaRowSinopsis"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/RepartoTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reparto"
+                    android:textColor="@color/myPrimaryDarkColor"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignBaseline="@+id/RepartoTitle"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/RepartoTitle"
+                    android:background="@color/myPrimaryDarkColor"></RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/peliculaRowRepartoExtendido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divReparto"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="20dp"
+                android:text="Lorem im"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                android:id="@+id/divDetalles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/peliculaRowRepartoExtendido"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/DetallesTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detalles"
+                    android:textColor="@color/myPrimaryDarkColor"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignBaseline="@+id/DetallesTitle"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/DetallesTitle"
+                    android:background="@color/myPrimaryDarkColor"></RelativeLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/peliculaRowAnno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divDetalles"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="10dp"
+                android:text="Lorem im"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/peliculaRowEstudio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/peliculaRowAnno"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="10dp"
+                android:text="Lorem im"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

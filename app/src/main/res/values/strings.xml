@@ -17,4 +17,11 @@
     <string name="duracion">Duración</string>
     <string name="minutos">minutos</string>
     <string name="cartelera">Cartelera</string>
+    <string name="estreno">Estreno:</string>
+    <string name="director">Dir.</string>
+    <string name="sinopsis">Sinopsis</string>
+    <string name="reparto">Reparto</string>
+    <string name="detalles">Detalles</string>
+    <string name="estudio">Estudio:</string>
+    <string name="anno">Año:</string>
 </resources>
