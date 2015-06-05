@@ -3,6 +3,7 @@ package com.ligresoftware.queechanenelcine.utils;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
+import com.ligresoftware.queechanenelcine.Constants;
 import com.ligresoftware.queechanenelcine.R;
 import com.ligresoftware.queechanenelcine.models.Cine;
 import com.ligresoftware.queechanenelcine.models.Ciudad;
@@ -12,15 +13,14 @@ import com.ligresoftware.queechanenelcine.models.helpers.CineUnit;
 public class CineUtils {
     private static CineUtilsCallback mCallback;
 
-    public boolean getCines(Ciudad ciudad) {
+    public boolean getCines(final Ciudad ciudad) {
         AsyncTask<Void, Integer, CineList> getCinesTask =
                 new AsyncTask<Void, Integer, CineList>() {
                     @Override
                     protected CineList doInBackground(Void... unused) {
                         try {
-                            System.out.println("Las pido");
-                            //TODO poner el id de la ciudad
-                            String json = HttpUtils.readUrl("http://demo0064908.mockable.io/api/cine/ciudades/075120b9d524ae8a681fb8fc02ee00d7");
+                            System.out.println("Las pido de: " + ciudad.getCiudadId() + " ** " + ciudad.get_id());
+                            String json = HttpUtils.readUrl(Constants.WEBSERVICE_URL + "/api/cine/ciudades/" + ciudad.get_id()); //075120b9d524ae8a681fb8fc02ee00d7
 
                             Gson gson = new Gson();
                             CineList cinesGson = gson.fromJson(json, CineList.class);
@@ -54,15 +54,14 @@ public class CineUtils {
         return true;
     }
 
-    public boolean getCineDetail(String idCine) {
+    public boolean getCineDetail(final String idCine) {
         AsyncTask<Void, Integer, Cine> getCineTask =
                 new AsyncTask<Void, Integer, Cine>() {
                     @Override
                     protected Cine doInBackground(Void... unused) {
                         try {
                             System.out.println("Las pido");
-                            //TODO poner el id del cine
-                            String json = HttpUtils.readUrl("https://demo0064908.mockable.io/api/cine/cines/4a5a5de58b2b50e7ff48dbb669f6be03");
+                            String json = HttpUtils.readUrl(Constants.WEBSERVICE_URL + "/api/cine/cines/" + idCine); //4a5a5de58b2b50e7ff48dbb669f6be03
 
                             Gson gson = new Gson();
                             CineUnit cineGson = gson.fromJson(json, CineUnit.class);
@@ -109,9 +108,9 @@ public class CineUtils {
     //Métodos estáticos
     public static int getCineFavouritedResource(boolean status) {
         if (status) {
-            return R.drawable.ic_favorite_black_36dp;
+            return R.drawable.ic_favorite_black_24dp;
         } else {
-            return R.drawable.ic_favorite_outline_black_36dp;
+            return R.drawable.ic_favorite_outline_black_24dp;
         }
     }
 }

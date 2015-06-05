@@ -60,6 +60,7 @@ public class SesionesAdapter extends ArrayAdapter {
             holder.portada.setImageBitmap(bitmap);
         } else {
             //TODO pongo imagen por defecto
+            //TODO poner el icono de marker y no el de mapa que se entenderá mejor
         }
 
         //Relleno los datos

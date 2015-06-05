@@ -56,8 +56,10 @@ public class AddFavouriteActivity extends ActionBarActivity
                 int id = item.getItemId();
 
                 //A ver si he pinchao el elemento que espero
-                if (id == R.id.action_finish) {
-                    Logger.d("Pincho", "A terminar");
+                if (id == R.id.action_add_favorite_finish) {
+                    //Termino de añadir favoritos, y simulo un Atras desde Provincias
+                    mCurrentFragment = "AddFavoritosProvincias";
+                    onBackPressed();
                     return true;
                 }
                 return false;
@@ -94,7 +96,6 @@ public class AddFavouriteActivity extends ActionBarActivity
                 mCurrentFragment = "AddFavoritosCiudades";
                 break;
         }
-
         super.onBackPressed();
     }
 
@@ -168,10 +169,4 @@ public class AddFavouriteActivity extends ActionBarActivity
         SharedPreferencesUtils.setListaFavoritos(mContext, lista);
     }
 
-    @Override
-    public void onCinesFragmentInteractionFinish() {
-        //Termino de añadir favoritos, y simulo un Atras desde Provincias
-        mCurrentFragment = "AddFavoritosProvincias";
-        onBackPressed();
-    }
 }

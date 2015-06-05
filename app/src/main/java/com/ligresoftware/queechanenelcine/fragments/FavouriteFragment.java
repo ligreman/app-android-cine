@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.ligresoftware.queechanenelcine.AddFavouriteActivity;
@@ -17,7 +18,6 @@ import com.ligresoftware.queechanenelcine.Constants;
 import com.ligresoftware.queechanenelcine.R;
 import com.ligresoftware.queechanenelcine.adapters.FavoritosAdapter;
 import com.ligresoftware.queechanenelcine.adapters.FavoritosAdapterHolder;
-import com.ligresoftware.queechanenelcine.components.PinnedSectionListView;
 import com.ligresoftware.queechanenelcine.utils.Logger;
 import com.ligresoftware.queechanenelcine.utils.SharedPreferencesUtils;
 
@@ -29,7 +29,7 @@ import java.util.Map;
 public class FavouriteFragment extends Fragment {
     private FavoritosAdapter adaptador;
     private OnFavouriteFragmentInteractionListener mListener;
-    private PinnedSectionListView mFavoritosListView;
+    private ListView mFavoritosListView;
 
     public FavouriteFragment() {
     }
@@ -57,7 +57,7 @@ public class FavouriteFragment extends Fragment {
         });
 
         //Listener de eventos en la lista pined
-        mFavoritosListView = (PinnedSectionListView) view.findViewById(R.id.favoritosListView);
+        mFavoritosListView = (ListView) view.findViewById(R.id.favoritosListView);
         mFavoritosListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long type) {
@@ -151,7 +151,6 @@ public class FavouriteFragment extends Fragment {
         //Al volver recargo los favoritos
         if (resultCode == Activity.RESULT_OK && requestCode == Constants.REQUEST_CODE_ADD_FAVOURITES) {
             populateAdapter();
-            mListener.onFragmentInteraction();
         }
     }
 }

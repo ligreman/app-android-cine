@@ -8,13 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.ligresoftware.queechanenelcine.R;
-import com.ligresoftware.queechanenelcine.components.PinnedSectionListView;
 import com.ligresoftware.queechanenelcine.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoritosAdapter extends BaseAdapter implements PinnedSectionListView.PinnedSectionListAdapter {
+public class FavoritosAdapter extends BaseAdapter {
     public static final int TYPE_ITEM = 0;
     public static final int TYPE_HEADER = 1;
 
@@ -48,13 +47,8 @@ public class FavoritosAdapter extends BaseAdapter implements PinnedSectionListVi
 
     @Override
     public long getItemId(int position) {
-        //No vale para nada
+        //Se pasa como "type" en el evento on click de un item de la lista
         return mData.get(position).getType();
-    }
-
-    @Override
-    public boolean isItemViewTypePinned(int viewType) {
-        return viewType == TYPE_HEADER;
     }
 
     @Override

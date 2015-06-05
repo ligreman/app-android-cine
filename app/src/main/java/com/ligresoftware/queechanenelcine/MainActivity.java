@@ -2,13 +2,9 @@ package com.ligresoftware.queechanenelcine;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerCallbacks;
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerFragment;
@@ -23,7 +19,7 @@ public class MainActivity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private FavouriteFragment mFavouriteFragment = new FavouriteFragment();
-    private Fragment mEmptyFragment = new Fragment();
+    private Fragment mMoviesFragment = new Fragment();
     private Toolbar mToolbar;
 
     @Override
@@ -51,20 +47,12 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        // update the main content by replacing fragments
-        Toast.makeText(this, "Menu item selected -> " + position, Toast.LENGTH_SHORT).show();
-
         //Según la position muestro uno u otro fragmento
         switch (position) {
-            case -1:
+            case 1:
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.container, mEmptyFragment, "Empty")
+                        .replace(R.id.container, mMoviesFragment, "Peliculas")
                         .commit();
-                break;
-            case 2:
-                /*getFragmentManager().beginTransaction()
-                        .replace(R.id.container, mCustomFab, "Custom")
-                        .commit();*/
                 break;
             case 0:
             default:
@@ -84,7 +72,7 @@ public class MainActivity extends ActionBarActivity
     }
 
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen
@@ -110,19 +98,12 @@ public class MainActivity extends ActionBarActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
 
     @Override
     public void onFragmentInteraction() {
-        //Recreo el fragmento en 1 segundo
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                recreate();
-            }
-        }, 1);
+
     }
 
 }

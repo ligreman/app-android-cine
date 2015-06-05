@@ -12,6 +12,7 @@ import com.ligresoftware.queechanenelcine.R;
 import com.ligresoftware.queechanenelcine.adapters.ProvinciasAdapter;
 import com.ligresoftware.queechanenelcine.models.Provincia;
 import com.ligresoftware.queechanenelcine.models.helpers.ProvinciaList;
+import com.ligresoftware.queechanenelcine.utils.Logger;
 import com.ligresoftware.queechanenelcine.utils.ProvinciaUtils;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class AddFavouriteProvinciasFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         System.out.println("Cojo las provincias");
+
         ProvinciaUtils pUtils = new ProvinciaUtils();
         pUtils.setmCallback(new ProvinciaUtils.ProvinciaUtilsCallback() {
 
@@ -37,10 +39,6 @@ public class AddFavouriteProvinciasFragment extends ListFragment {
                 System.out.println("  TOTAL  " + listaProvincias.getProvincias().size());
 
                 provincias = listaProvincias.getProvincias();
-
-//                Provincia dd = (Provincia) provincias.get(0);
-//                Logger.d("PROVINCIA", dd.getNombre() + " " + dd.get_id());
-
                 setListAdapter(new ProvinciasAdapter(getActivity(), provincias));
             }
         });
@@ -57,6 +55,7 @@ public class AddFavouriteProvinciasFragment extends ListFragment {
 
     @Override
     public void onAttach(Activity activity) {
+        Logger.d("FAV PROV", "Attach");
         super.onAttach(activity);
         try {
             mListener = (OnAddFavouriteProvinciasFragmentInteractionListener) activity;
@@ -70,6 +69,7 @@ public class AddFavouriteProvinciasFragment extends ListFragment {
         super.onDetach();
         mListener = null;
     }
+
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {

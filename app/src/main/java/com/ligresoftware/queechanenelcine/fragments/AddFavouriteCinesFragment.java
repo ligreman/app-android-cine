@@ -100,7 +100,5 @@ public class AddFavouriteCinesFragment extends ListFragment {
     //Para comunicarse con la actividad
     public interface OnAddFavouriteCinesFragmentInteractionListener {
         public void onCinesFragmentInteractionSelectCine(Cine cineSelected, ImageView imageView);
-
-        public void onCinesFragmentInteractionFinish();
     }
 }

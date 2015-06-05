@@ -68,7 +68,6 @@
                 android:layout_below="@+id/detailTelefonoCine"
                 android:text="" />
         </RelativeLayout>
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -97,6 +96,24 @@
             android:layout_marginRight="10dp"
             android:layout_toRightOf="@+id/carteleraTitle"
             android:background="@color/myPrimaryDarkColor"></RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/loadingCineDetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#ffffffff">
+
+        <ProgressBar
+            android:id="@+id/progressBarAddFavouriteProvincias"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminate="true" />
+
     </RelativeLayout>
 
     <ListView

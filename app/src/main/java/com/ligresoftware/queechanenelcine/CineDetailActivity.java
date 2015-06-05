@@ -100,6 +100,9 @@ public class CineDetailActivity extends ActionBarActivity {
 
         //El adapter
         lista.setAdapter(new SesionesAdapter(this, sesiones));
+
+        //Quito el progress
+        findViewById(R.id.loadingCineDetail).setVisibility(View.GONE);
     }
 
     private void setGoogleMapsCoords(final Float latitude, final Float longitude, final String cineName) {

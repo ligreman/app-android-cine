@@ -3,6 +3,7 @@ package com.ligresoftware.queechanenelcine.utils;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
+import com.ligresoftware.queechanenelcine.Constants;
 import com.ligresoftware.queechanenelcine.models.helpers.ProvinciaList;
 
 public class ProvinciaUtils {
@@ -16,8 +17,8 @@ public class ProvinciaUtils {
                         try {
 //                            String json = HttpUtils.readUrl("http://localhost/api/cine/ciudades");
                             System.out.println("Las pido");
-                            String json = HttpUtils.readUrl("http://demo0064908.mockable.io/api/cine/ciudades");
-//                            System.out.println("Tegno esto: " + json);
+                            String json = HttpUtils.readUrl(Constants.WEBSERVICE_URL + "/api/cine/ciudades");
+                            System.out.println("Tegno esto: " + json);
                             Gson gson = new Gson();
                             ProvinciaList provinciasGson = gson.fromJson(json, ProvinciaList.class);
 

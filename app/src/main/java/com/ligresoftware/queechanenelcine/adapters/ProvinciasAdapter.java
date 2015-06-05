@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.ligresoftware.queechanenelcine.R;
 import com.ligresoftware.queechanenelcine.models.Provincia;
-import com.ligresoftware.queechanenelcine.utils.Logger;
 
 import java.io.IOException;
 import java.util.List;
@@ -52,8 +51,16 @@ public class ProvinciasAdapter extends ArrayAdapter {
         holder.provinciaName.setText(item.getNombre());
         try {
             String imagen = item.getNombre().toLowerCase();
-            Logger.w("Provincia: ", imagen);
-            holder.provinciaFondo.setImageDrawable(Drawable.createFromStream(getContext().getAssets().open("wallpaper.jpg"), null));
+//            Logger.w("Provincia: ", imagen);
+            imagen = imagen.replace(' ', '_');
+            imagen = imagen.replace('.', '_');
+            imagen = imagen.replace('á', 'a');
+            imagen = imagen.replace('é', 'e');
+            imagen = imagen.replace('í', 'i');
+            imagen = imagen.replace('ó', 'o');
+            imagen = imagen.replace('ú', 'u');
+            imagen = imagen.replace('ñ', 'n');
+            holder.provinciaFondo.setImageDrawable(Drawable.createFromStream(getContext().getAssets().open(imagen + ".jpg"), null));
         } catch (IOException e) {
             e.printStackTrace();
         }
