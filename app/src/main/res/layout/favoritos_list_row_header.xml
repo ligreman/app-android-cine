@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="75dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/favoritosRowHeaderCiudadName"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="55dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="0dp"
@@ -22,6 +22,8 @@
         android:singleLine="true"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:background="#6db00d0f" />
+        android:background="@color/myPrimaryColor"
+        android:textColor="@color/myWindowBackground"
+        android:textStyle="bold" />
 
 </RelativeLayout>

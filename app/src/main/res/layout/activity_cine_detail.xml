@@ -30,44 +30,44 @@
             android:src="@drawable/ic_map_black_48dp"
             android:tint="@color/myAccentColor" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/locationGoogleMaps">
-
-            <!--<TextView
-                android:id="@+id/detailNombreCine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yelmo Cines Los Rosales" />-->
+            android:layout_height="110dp"
+            android:layout_toRightOf="@+id/locationGoogleMaps"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/detailDireccionCine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
                 android:text="" />
 
             <TextView
                 android:id="@+id/detailCiudadCine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/detailDireccionCine"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
                 android:text="" />
 
             <TextView
                 android:id="@+id/detailTelefonoCine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/detailCiudadCine"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
                 android:text="" />
 
-            <TextView
-                android:id="@+id/detailPrecioCine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/detailTelefonoCine"
-                android:text="" />
-        </RelativeLayout>
+            <ScrollView
+                android:id="@+id/scrollView2"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:scrollbarAlwaysDrawVerticalTrack="true">
+
+                <TextView
+                    android:id="@+id/detailPrecioCine"
+                    android:text=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </ScrollView>
+
+        </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
