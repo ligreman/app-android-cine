@@ -26,4 +26,8 @@
     <string name="anno">Año:</string>
     <string name="miscines">Mis cines</string>
     <string name="peliculas">Películas</string>
+    <string name="nodata">No hay información de este cine de momento.</string>
+    <string name="nocines">No hay cines activos para esta ciudad.</string>
+    <string name="nopelis">No hay películas todavía.</string>
+    <string name="press_again_to_exit">Pulsa de nuevo para salir</string>
 </resources>

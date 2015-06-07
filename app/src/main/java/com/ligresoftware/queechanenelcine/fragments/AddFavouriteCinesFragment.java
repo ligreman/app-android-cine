@@ -1,9 +1,9 @@
 package com.ligresoftware.queechanenelcine.fragments;
 
 import android.app.Activity;
+import android.app.ListFragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,16 +44,21 @@ public class AddFavouriteCinesFragment extends ListFragment {
 
             @Override
             public void onGetCinesFinished(CineList listaCines) {
-                System.out.println("  TOTAL  " + listaCines.getCines().size());
+                if (listaCines != null) {
+                    System.out.println("  TOTAL  " + listaCines.getCines().size()); //TODO null
 
-                cines = listaCines.getCines();
+                    cines = listaCines.getCines();
 
 //                Provincia dd = (Provincia) provincias.get(0);
 //                Logger.d("PROVINCIA", dd.getNombre() + " " + dd.get_id());
 
-                //La pongo en la lista
-                FavoritoList fl = SharedPreferencesUtils.getListaFavoritos(mContext);
-                setListAdapter(new CinesAdapter(mContext, cines, fl));
+                    //La pongo en la lista
+                    FavoritoList fl = SharedPreferencesUtils.getListaFavoritos(mContext);
+                    setListAdapter(new CinesAdapter(mContext, cines, fl));
+                } else {
+                    getActivity().findViewById(R.id.addCinesFragmentNoCines).setVisibility(View.VISIBLE);
+                    getActivity().findViewById(R.id.progressBarAddFavouriteCines).setVisibility(View.INVISIBLE);
+                }
             }
 
             @Override

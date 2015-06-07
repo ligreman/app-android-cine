@@ -1,31 +1,46 @@
 package com.ligresoftware.queechanenelcine;
 
-import android.app.Fragment;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerCallbacks;
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerFragment;
 import com.ligresoftware.queechanenelcine.fragments.FavouriteFragment;
+import com.ligresoftware.queechanenelcine.fragments.MoviesFragment;
+import com.ligresoftware.queechanenelcine.models.Pelicula;
+import com.ligresoftware.queechanenelcine.models.Sesion;
+import com.ligresoftware.queechanenelcine.models.helpers.PeliculaList;
+import com.ligresoftware.queechanenelcine.models.helpers.PeliculaUnit;
+import com.ligresoftware.queechanenelcine.utils.PeliculaUtils;
 
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerCallbacks, FavouriteFragment.OnFavouriteFragmentInteractionListener {
+        implements NavigationDrawerCallbacks, FavouriteFragment.OnFavouriteFragmentInteractionListener,
+        MoviesFragment.OnPeliculasFragmentInteractionListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
+    private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
+    private long mBackPressed;
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private FavouriteFragment mFavouriteFragment = new FavouriteFragment();
-    private Fragment mMoviesFragment = new Fragment();
+    private MoviesFragment mMoviesFragment = new MoviesFragment();
     private Toolbar mToolbar;
+    private Activity actividad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        actividad = this;
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
@@ -62,13 +77,33 @@ public class MainActivity extends ActionBarActivity
         }
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent e) {
+        if (keyCode == KeyEvent.KEYCODE_MENU) {
+            if (!mNavigationDrawerFragment.isDrawerOpen()) {
+                mNavigationDrawerFragment.openDrawer();
+            } else {
+                mNavigationDrawerFragment.closeDrawer();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, e);
+    }
 
     @Override
     public void onBackPressed() {
         if (mNavigationDrawerFragment.isDrawerOpen())
             mNavigationDrawerFragment.closeDrawer();
-        else
-            super.onBackPressed();
+        else {
+            if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()) {
+                super.onBackPressed();
+                return;
+            } else {
+                Toast.makeText(getBaseContext(), getString(R.string.press_again_to_exit), Toast.LENGTH_SHORT).show();
+            }
+
+            mBackPressed = System.currentTimeMillis();
+        }
     }
 
 
@@ -106,4 +141,49 @@ public class MainActivity extends ActionBarActivity
 
     }
 
+    @Override
+    public void onPeliculaSelectedFragmentInteraction(Pelicula peliculaSelected) {
+        //Llamo al webservice para obtener la información
+        PeliculaUtils pUtils = new PeliculaUtils();
+        pUtils.setmCallback(new PeliculaUtils.PeliculaUtilsCallback() {
+            //Cuando obtengo la lista de pelis
+            @Override
+            public void onGetPeliculasFinished(PeliculaList listaPeliculas) {
+            }
+
+            @Override
+            public void onGetPeliculaFinished(PeliculaUnit peliculaUnit) {
+                if (!peliculaUnit.getError().equals("")) {
+                    return;
+                }
+
+                //Creo una sesión con los datos
+                Pelicula p = peliculaUnit.getPelicula();
+
+                Sesion sesion = new Sesion();
+                sesion.set_idPelicula(p.get_id());
+                sesion.setPeliculaId(p.getPeliculaId());
+                sesion.setTitulo(p.getTitulo());
+                sesion.setTituloOriginal(p.getTituloOriginal());
+                sesion.setDirector(p.getDirector());
+                sesion.setReparto(p.getReparto());
+                sesion.setPais(p.getPais());
+                sesion.setDuracion(p.getDuracion());
+                sesion.setGenero(p.getGenero());
+                sesion.setEstreno(p.getEstreno());
+                sesion.setSinopsis(p.getSinopsis());
+                sesion.setRepartoExtendido(p.getRepartoExtendido());
+                sesion.setEstudio(p.getEstudio());
+                sesion.setAnno(p.getAnno());
+                sesion.setImagen(p.getImagen());
+
+                //Cargo la actividad
+                Intent intent = new Intent(actividad, PeliculaDetailActivity.class);
+                intent.putExtra(Constants.EXTRA_SESION_SELECTED, sesion);
+                startActivity(intent);
+            }
+        });
+        //Lanzo la obtención del listado de peliculas
+        pUtils.getPelicula(peliculaSelected.getPeliculaId());
+    }
 }

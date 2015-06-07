@@ -70,7 +70,7 @@ public class AddFavouriteActivity extends ActionBarActivity
             //Fragmento inicial
             mAddFavouriteProvinciasFragment = new AddFavouriteProvinciasFragment();
             mCurrentFragment = "AddFavoritosProvincias";
-            getSupportFragmentManager().beginTransaction()
+            getFragmentManager().beginTransaction()
                     .replace(R.id.container_add_favourite, mAddFavouriteProvinciasFragment, "AddFavoritosProvincias")
                     .commit();
         }
@@ -112,7 +112,7 @@ public class AddFavouriteActivity extends ActionBarActivity
 
         mToolbar.setTitle(getString(R.string.ciudades));
         mCurrentFragment = "AddFavoritosCiudades";
-        getSupportFragmentManager().beginTransaction()
+        getFragmentManager().beginTransaction()
                 .replace(R.id.container_add_favourite, ciudadesFragment, "AddFavoritosCiudades")
                 .addToBackStack(null)
                 .commit();
@@ -131,7 +131,7 @@ public class AddFavouriteActivity extends ActionBarActivity
 
         mToolbar.setTitle(getString(R.string.fav_cine));
         mCurrentFragment = "AddFavoritosCines";
-        getSupportFragmentManager().beginTransaction()
+        getFragmentManager().beginTransaction()
                 .replace(R.id.container_add_favourite, cinesFragment, "AddFavoritosCines")
                 .addToBackStack(null)
                 .commit();

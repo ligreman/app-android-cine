@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ligresoftware.queechanenelcine.fragments.AddFavouriteCinesFragment">
+    android:orientation="vertical">
 
     <ListView
         android:id="@id/android:list"
@@ -18,7 +18,7 @@
         android:background="#ffffffff">
 
         <ProgressBar
-            android:id="@+id/progressBarAddFavouriteCines"
+            android:id="@+id/progressBarMovies"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,14 +26,5 @@
             android:indeterminate="true" />
 
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/addCinesFragmentNoCines"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:text="@string/nocines"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:visibility="gone" />
 
 </RelativeLayout>

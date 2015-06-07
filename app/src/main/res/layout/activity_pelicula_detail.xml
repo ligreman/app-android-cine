@@ -43,6 +43,7 @@
                 android:inputType="textMultiLine"
                 android:paddingLeft="10dp"
                 android:text="@string/hello_world"
+                android:textColor="@color/myTextPrimaryColor"
                 android:textSize="15sp"
                 android:textStyle="italic" />
 
@@ -71,7 +72,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
                         android:layout_marginTop="3dp"
-                        android:text="Medium Text" />
+                        android:text="Medium Text"
+                        android:textColor="@color/myTextPrimaryColor" />
 
                     <TextView
                         android:id="@+id/peliculaRowReparto"
@@ -79,7 +81,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/peliculaRowDirector"
                         android:layout_marginBottom="3dp"
-                        android:text="Medium Text" />
+                        android:text="Medium Text"
+                        android:textColor="@color/myTextPrimaryColor" />
 
                     <TextView
                         android:id="@+id/peliculaRowDuracion"
@@ -87,7 +90,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/peliculaRowReparto"
                         android:layout_marginBottom="3dp"
-                        android:text="Medium Text" />
+                        android:text="Medium Text"
+                        android:textColor="@color/myTextPrimaryColor" />
 
                     <TextView
                         android:id="@+id/peliculaRowGenero"
@@ -95,7 +99,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/peliculaRowDuracion"
                         android:layout_marginBottom="3dp"
-                        android:text="Medium Text" />
+                        android:text="Medium Text"
+                        android:textColor="@color/myTextPrimaryColor" />
 
                     <TextView
                         android:id="@+id/peliculaRowEstreno"
@@ -103,7 +108,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/peliculaRowGenero"
                         android:layout_marginBottom="3dp"
-                        android:text="Medium Text" />
+                        android:text="Medium Text"
+                        android:textColor="@color/myTextPrimaryColor" />
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -142,6 +148,7 @@
                 android:layout_marginBottom="5dp"
                 android:paddingLeft="15dp"
                 android:text="Lorem im"
+                android:textColor="@color/myTextPrimaryColor"
                 android:textSize="15sp" />
 
             <RelativeLayout
@@ -179,6 +186,7 @@
                 android:layout_marginBottom="5dp"
                 android:paddingLeft="15dp"
                 android:text="Lorem im"
+                android:textColor="@color/myTextPrimaryColor"
                 android:textSize="15sp" />
 
             <RelativeLayout
@@ -216,6 +224,7 @@
                 android:layout_marginBottom="5dp"
                 android:paddingLeft="15dp"
                 android:text="Lorem im"
+                android:textColor="@color/myTextPrimaryColor"
                 android:textSize="15sp" />
 
             <TextView
@@ -226,6 +235,7 @@
                 android:layout_marginBottom="10dp"
                 android:paddingLeft="15dp"
                 android:text="Lorem im"
+                android:textColor="@color/myTextPrimaryColor"
                 android:textSize="15sp" />
 
         </RelativeLayout>

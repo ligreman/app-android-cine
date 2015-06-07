@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Large Text"
+            android:textColor="@color/myTextPrimaryColor"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -29,21 +30,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sesionesRowTitulo"
-            android:text="Large Text" />
+            android:text="Large Text"
+            android:textColor="@color/myTextPrimaryColor" />
 
         <TextView
             android:id="@+id/sesionesRowGenero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sesionesRowDuracion"
-            android:text="Large Text" />
+            android:text="Large Text"
+            android:textColor="@color/myTextPrimaryColor" />
 
         <TextView
             android:id="@+id/sesionesRowHorarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sesionesRowGenero"
-            android:text="Large Text" />
+            android:text="Large Text"
+            android:textColor="@color/myTextPrimaryColor" />
 
     </RelativeLayout>
 

@@ -103,6 +103,11 @@ public class CineDetailActivity extends ActionBarActivity {
 
         //Quito el progress
         findViewById(R.id.loadingCineDetail).setVisibility(View.GONE);
+
+        //Si no hay sesiones muestro el texto
+        if (sesiones.size() == 0) {
+            findViewById(R.id.cineDetailNoSesion).setVisibility(View.VISIBLE);
+        }
     }
 
     private void setGoogleMapsCoords(final Float latitude, final Float longitude, final String cineName) {

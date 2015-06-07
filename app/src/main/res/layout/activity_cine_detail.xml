@@ -27,7 +27,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="15dp"
-            android:src="@drawable/ic_map_black_48dp"
+            android:src="@drawable/ic_place_black_48dp"
             android:tint="@color/myAccentColor" />
 
         <LinearLayout
@@ -40,19 +40,22 @@
                 android:id="@+id/detailDireccionCine"
                 android:layout_width="match_parent"
                 android:layout_height="18dp"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/myTextPrimaryColor" />
 
             <TextView
                 android:id="@+id/detailCiudadCine"
                 android:layout_width="match_parent"
                 android:layout_height="18dp"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/myTextPrimaryColor" />
 
             <TextView
                 android:id="@+id/detailTelefonoCine"
                 android:layout_width="match_parent"
                 android:layout_height="18dp"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/myTextPrimaryColor" />
 
             <ScrollView
                 android:id="@+id/scrollView2"
@@ -62,9 +65,10 @@
 
                 <TextView
                     android:id="@+id/detailPrecioCine"
-                    android:text=""
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/myTextPrimaryColor" />
             </ScrollView>
 
         </LinearLayout>
@@ -125,5 +129,16 @@
         android:dividerHeight="0dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
+
+    <TextView
+        android:id="@+id/cineDetailNoSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divTitulo"
+        android:padding="10dp"
+        android:text="@string/nodata"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/myTextPrimaryColor"
+        android:visibility="gone" />
 
 </RelativeLayout>
