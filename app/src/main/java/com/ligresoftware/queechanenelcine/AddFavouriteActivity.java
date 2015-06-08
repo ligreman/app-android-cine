@@ -79,9 +79,11 @@ public class AddFavouriteActivity extends ActionBarActivity
     @Override
     public void onBackPressed() {
         //Si el fragmento es el de Provincias aviso de que he terminado a la actividad anterior
+        Logger.d("----BACK----", mCurrentFragment);
         switch (mCurrentFragment) {
             case "AddFavoritosProvincias":
                 setResult(RESULT_OK);
+                Logger.d("----BACK----", "Provi");
                 this.finish();
                 break;
 
@@ -89,14 +91,22 @@ public class AddFavouriteActivity extends ActionBarActivity
                 //Si vengo del fragmento de ciudades pongo el titulo de Provincias
                 mToolbar.setTitle(getString(R.string.provincias));
                 mCurrentFragment = "AddFavoritosProvincias";
+                Logger.d("----BACK----", "Ciu");
                 break;
 
             case "AddFavoritosCines":
                 mToolbar.setTitle(getString(R.string.ciudades));
                 mCurrentFragment = "AddFavoritosCiudades";
+                Logger.d("----BACK----", "cine");
                 break;
         }
-        super.onBackPressed();
+//        super.onBackPressed();
+
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            super.onBackPressed();
+        } else {
+            getFragmentManager().popBackStack();
+        }
     }
 
     //Recibo la provincia seleccionada cuando elijo una en el fragmento de Provincias

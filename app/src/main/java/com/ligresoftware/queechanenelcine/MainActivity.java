@@ -17,6 +17,7 @@ import com.ligresoftware.queechanenelcine.models.Pelicula;
 import com.ligresoftware.queechanenelcine.models.Sesion;
 import com.ligresoftware.queechanenelcine.models.helpers.PeliculaList;
 import com.ligresoftware.queechanenelcine.models.helpers.PeliculaUnit;
+import com.ligresoftware.queechanenelcine.utils.Logger;
 import com.ligresoftware.queechanenelcine.utils.PeliculaUtils;
 
 
@@ -92,6 +93,7 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onBackPressed() {
+        Logger.d("MAIN", "BACK pressed");
         if (mNavigationDrawerFragment.isDrawerOpen())
             mNavigationDrawerFragment.closeDrawer();
         else {

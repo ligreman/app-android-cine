@@ -8,7 +8,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="provincias">Provincias</string>
     <string name="ciudades">Ciudades</string>
-    <string name="fav_cine">Cines favoritos</string>
+    <string name="fav_cine">Cines</string>
     <string name="tag_favorito">tag_favorito</string>
     <string name="favourite_error_saving">Se produjo un error al guardar el favorito, inténtalo de nuevo.</string>
     <string name="action_finish">Terminar</string>
