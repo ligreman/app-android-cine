@@ -13,6 +13,7 @@ import com.ligresoftware.queechanenelcine.R;
 import com.ligresoftware.queechanenelcine.adapters.CiudadesAdapter;
 import com.ligresoftware.queechanenelcine.models.Ciudad;
 import com.ligresoftware.queechanenelcine.models.Provincia;
+import com.ligresoftware.queechanenelcine.utils.Logger;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class AddFavouriteCiudadesFragment extends ListFragment {
         //Cojo la provincia que me han pasado
         Provincia provinciaSelected = getArguments().getParcelable(Constants.PARCELABLE_PROVINCIA);
 
-        System.out.println("Ciudades de la provincia " + provinciaSelected.getCiudades().size());
+        Logger.d("PROVCITIES", "Ciudades de la provincia " + provinciaSelected.getCiudades().size());
         ciudades = provinciaSelected.getCiudades();
 
         //La pongo en la lista

@@ -16,9 +16,7 @@ public class ProvinciaUtils {
                     protected ProvinciaList doInBackground(Void... unused) {
                         try {
 //                            String json = HttpUtils.readUrl("http://localhost/api/cine/ciudades");
-                            System.out.println("Las pido");
                             String json = HttpUtils.readUrl(Constants.WEBSERVICE_URL + "/api/cine/ciudades");
-                            System.out.println("Tegno esto: " + json);
                             Gson gson = new Gson();
                             ProvinciaList provinciasGson = gson.fromJson(json, ProvinciaList.class);
 

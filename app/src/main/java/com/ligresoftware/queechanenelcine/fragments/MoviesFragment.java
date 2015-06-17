@@ -29,8 +29,6 @@ public class MoviesFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        System.out.println("Cojo las peliculas");
-
         //Pido la lista de películas
         PeliculaUtils pUtils = new PeliculaUtils();
         pUtils.setmCallback(new PeliculaUtils.PeliculaUtilsCallback() {

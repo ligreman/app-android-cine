@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.ligresoftware.queechanenelcine.AddFavouriteActivity;
@@ -30,6 +31,7 @@ public class FavouriteFragment extends Fragment {
     private FavoritosAdapter adaptador;
     private OnFavouriteFragmentInteractionListener mListener;
     private ListView mFavoritosListView;
+    private TextView mEmpty;
 
     public FavouriteFragment() {
     }
@@ -55,6 +57,8 @@ public class FavouriteFragment extends Fragment {
                 startActivityForResult(i, Constants.REQUEST_CODE_ADD_FAVOURITES);
             }
         });
+
+        mEmpty = (TextView) view.findViewById(R.id.favoritosEmpty);
 
         //Listener de eventos en la lista pined
         mFavoritosListView = (ListView) view.findViewById(R.id.favoritosListView);
@@ -109,6 +113,9 @@ public class FavouriteFragment extends Fragment {
                     listDataHolder.add(fah);
                 }
             }
+            mEmpty.setVisibility(View.INVISIBLE);
+        } else {
+            mEmpty.setVisibility(View.VISIBLE);
         }
 
         adaptador.updateAdapter(listDataHolder);

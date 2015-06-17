@@ -18,6 +18,7 @@ import com.ligresoftware.queechanenelcine.models.Ciudad;
 import com.ligresoftware.queechanenelcine.models.FavoritoList;
 import com.ligresoftware.queechanenelcine.models.helpers.CineList;
 import com.ligresoftware.queechanenelcine.utils.CineUtils;
+import com.ligresoftware.queechanenelcine.utils.Logger;
 import com.ligresoftware.queechanenelcine.utils.SharedPreferencesUtils;
 
 import java.util.List;
@@ -45,8 +46,8 @@ public class AddFavouriteCinesFragment extends ListFragment {
             @Override
             public void onGetCinesFinished(CineList listaCines) {
                 if (listaCines != null) {
-                    System.out.println("  TOTAL  " + listaCines.getCines().size());
-//TODO quitar logs
+                    Logger.d("ADDCINES", "  TOTAL  " + listaCines.getCines().size());
+
                     cines = listaCines.getCines();
 
 //                Provincia dd = (Provincia) provincias.get(0);

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ligresoftware.queechanenelcine.R;
+import com.ligresoftware.queechanenelcine.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +86,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(navigationItems);
         adapter.setNavigationDrawerCallbacks(this);
         mDrawerList.setAdapter(adapter);
-        System.out.println("Poisicion: " + mCurrentSelectedPosition);
+        Logger.d("Navigation", "Poisicion: " + mCurrentSelectedPosition);
         selectItem(mCurrentSelectedPosition);
         return view;
     }

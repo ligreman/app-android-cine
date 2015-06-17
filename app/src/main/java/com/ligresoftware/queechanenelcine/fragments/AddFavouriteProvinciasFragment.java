@@ -29,14 +29,12 @@ public class AddFavouriteProvinciasFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        System.out.println("Cojo las provincias");
-
         ProvinciaUtils pUtils = new ProvinciaUtils();
         pUtils.setmCallback(new ProvinciaUtils.ProvinciaUtilsCallback() {
 
             @Override
             public void onGetProvinciasFinished(ProvinciaList listaProvincias) {
-                System.out.println("  TOTAL  " + listaProvincias.getProvincias().size());
+                Logger.d("PROV", "  TOTAL  " + listaProvincias.getProvincias().size());
 
                 provincias = listaProvincias.getProvincias();
                 setListAdapter(new ProvinciasAdapter(getActivity(), provincias));
