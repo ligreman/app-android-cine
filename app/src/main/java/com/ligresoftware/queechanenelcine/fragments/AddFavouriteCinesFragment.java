@@ -45,8 +45,8 @@ public class AddFavouriteCinesFragment extends ListFragment {
             @Override
             public void onGetCinesFinished(CineList listaCines) {
                 if (listaCines != null) {
-                    System.out.println("  TOTAL  " + listaCines.getCines().size()); //TODO null
-
+                    System.out.println("  TOTAL  " + listaCines.getCines().size());
+//TODO quitar logs
                     cines = listaCines.getCines();
 
 //                Provincia dd = (Provincia) provincias.get(0);

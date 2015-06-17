@@ -62,8 +62,6 @@ public class PeliculaDetailActivity extends ActionBarActivity {
             byte[] decodedString = Base64.decode(partes[1].getBytes(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             ((ImageView) findViewById(R.id.peliculaRowPortada)).setImageBitmap(bitmap);
-        } else {
-            //TODO pongo imagen por defecto
         }
     }
 

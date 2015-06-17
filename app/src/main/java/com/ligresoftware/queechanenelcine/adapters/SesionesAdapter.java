@@ -58,9 +58,6 @@ public class SesionesAdapter extends ArrayAdapter {
             byte[] decodedString = Base64.decode(partes[1].getBytes(), Base64.DEFAULT);
             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             holder.portada.setImageBitmap(bitmap);
-        } else {
-            //TODO pongo imagen por defecto
-            //TODO poner el icono de marker y no el de mapa que se entenderá mejor
         }
 
         //Relleno los datos
