@@ -96,7 +96,7 @@ public class FavouriteFragment extends Fragment {
         Logger.d("POPULO", "Tengo estos elementos " + matrix.size());
 
         //Recorro la estructura creando los elementos de mi lista
-        if (matrix != null) {
+        if (matrix != null && matrix.size() > 0) {
             for (Object obj : matrix.entrySet()) {
                 Map.Entry item = (Map.Entry) obj;
                 Pair<String, String> key = (Pair<String, String>) item.getKey();
