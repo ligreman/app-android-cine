@@ -56,7 +56,6 @@ public class PeliculaDetailActivity extends ActionBarActivity {
         ((TextView) findViewById(R.id.peliculaRowEstudio)).setText(getString(R.string.estudio) + " " + MyUtils.implode(sesion.getEstudio(), ", "));
         ((TextView) findViewById(R.id.peliculaRowAnno)).setText(getString(R.string.anno) + " " + sesion.getAnno());
 
-        //La imagen
         String[] partes = sesion.getImagen().split(",");
         if (partes.length == 2) {
             byte[] decodedString = Base64.decode(partes[1].getBytes(), Base64.DEFAULT);

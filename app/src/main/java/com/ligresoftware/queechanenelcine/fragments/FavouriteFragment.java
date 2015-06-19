@@ -30,7 +30,6 @@ import java.util.Map;
 public class FavouriteFragment extends Fragment {
     private FavoritosAdapter adaptador;
     private OnFavouriteFragmentInteractionListener mListener;
-    private ListView mFavoritosListView;
     private TextView mEmpty;
 
     public FavouriteFragment() {
@@ -61,7 +60,7 @@ public class FavouriteFragment extends Fragment {
         mEmpty = (TextView) view.findViewById(R.id.favoritosEmpty);
 
         //Listener de eventos en la lista pined
-        mFavoritosListView = (ListView) view.findViewById(R.id.favoritosListView);
+        ListView mFavoritosListView = (ListView) view.findViewById(R.id.favoritosListView);
         mFavoritosListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long type) {

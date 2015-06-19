@@ -1,5 +1,6 @@
 package com.ligresoftware.queechanenelcine.utils;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
@@ -13,14 +14,14 @@ import com.ligresoftware.queechanenelcine.models.helpers.CineUnit;
 public class CineUtils {
     private static CineUtilsCallback mCallback;
 
-    public boolean getCines(final Ciudad ciudad) {
+    public boolean getCines(final Context context, final Ciudad ciudad) {
         AsyncTask<Void, Integer, CineList> getCinesTask =
                 new AsyncTask<Void, Integer, CineList>() {
                     @Override
                     protected CineList doInBackground(Void... unused) {
                         try {
                             Logger.d("CINEUTILS", "Las pido de: " + ciudad.getCiudadId() + " ** " + ciudad.get_id());
-                            String json = HttpUtils.readUrl(Constants.WEBSERVICE_URL + "/api/cine/ciudades/" + ciudad.get_id()); //075120b9d524ae8a681fb8fc02ee00d7
+                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/cine/ciudades/" + ciudad.get_id()); //075120b9d524ae8a681fb8fc02ee00d7
 
                             Gson gson = new Gson();
                             CineList cinesGson = gson.fromJson(json, CineList.class);
@@ -54,13 +55,13 @@ public class CineUtils {
         return true;
     }
 
-    public boolean getCineDetail(final String idCine) {
+    public boolean getCineDetail(final Context context, final String idCine) {
         AsyncTask<Void, Integer, Cine> getCineTask =
                 new AsyncTask<Void, Integer, Cine>() {
                     @Override
                     protected Cine doInBackground(Void... unused) {
                         try {
-                            String json = HttpUtils.readUrl(Constants.WEBSERVICE_URL + "/api/cine/cines/" + idCine); //4a5a5de58b2b50e7ff48dbb669f6be03
+                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/cine/cines/" + idCine); //4a5a5de58b2b50e7ff48dbb669f6be03
 
                             Gson gson = new Gson();
                             CineUnit cineGson = gson.fromJson(json, CineUnit.class);

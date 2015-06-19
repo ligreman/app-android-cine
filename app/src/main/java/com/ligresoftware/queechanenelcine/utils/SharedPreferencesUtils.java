@@ -14,6 +14,40 @@ import java.util.HashMap;
 import java.util.List;
 
 public class SharedPreferencesUtils {
+    public static Boolean getPhotoAccess(Context context) {
+        if (context == null) {
+            return null;
+        }
+
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_FILE_FAVORITOS, Context.MODE_PRIVATE);
+        Boolean acceso = prefs.getBoolean(Constants.SHARED_PHOTOS_FAVORITOS, false);
+        return acceso;
+    }
+
+    public static void setPhotoAccess(Context context, Boolean acceso) {
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_FILE_FAVORITOS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(Constants.SHARED_PHOTOS_FAVORITOS, acceso);
+        editor.commit();
+    }
+
+    public static String getKey(Context context) {
+        if (context == null) {
+            return null;
+        }
+
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_FILE_FAVORITOS, Context.MODE_PRIVATE);
+        return prefs.getString(Constants.SHARED_KEY_FAVORITOS, null);
+    }
+
+    public static void setKey(Context context, String key) {
+        SharedPreferences prefs = context.getSharedPreferences(Constants.SHARED_FILE_FAVORITOS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(Constants.SHARED_KEY_FAVORITOS, key);
+        editor.commit();
+    }
+
+
     public static FavoritoList getListaFavoritos(Context context) {
         if (context == null) {
             //Devuelvo que se produjo un error o algo

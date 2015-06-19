@@ -1,12 +1,18 @@
 package com.ligresoftware.queechanenelcine;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ligresoftware.queechanenelcine.drawer.NavigationDrawerCallbacks;
@@ -19,6 +25,7 @@ import com.ligresoftware.queechanenelcine.models.helpers.PeliculaList;
 import com.ligresoftware.queechanenelcine.models.helpers.PeliculaUnit;
 import com.ligresoftware.queechanenelcine.utils.Logger;
 import com.ligresoftware.queechanenelcine.utils.PeliculaUtils;
+import com.ligresoftware.queechanenelcine.utils.SharedPreferencesUtils;
 
 
 public class MainActivity extends ActionBarActivity
@@ -109,7 +116,7 @@ public class MainActivity extends ActionBarActivity
     }
 
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen
@@ -131,11 +138,43 @@ public class MainActivity extends ActionBarActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            String key = SharedPreferencesUtils.getKey(actividad);
+
+            //Muestro el diálogo
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getString(R.string.promo));
+
+            // Set an EditText view to get user input
+            final EditText input = new EditText(this);
+            builder.setView(input);
+
+            if (key != null) {
+                input.setText(key);
+            }
+
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            input.setSelection(input.getText().length());
+
+            builder.setPositiveButton(getString(R.string.save), new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    String value = input.getText().toString();
+                    SharedPreferencesUtils.setKey(actividad, value);
+                }
+            });
+
+            builder.setNegativeButton(getString(R.string.cancelar), new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
 
     @Override
@@ -186,6 +225,6 @@ public class MainActivity extends ActionBarActivity
             }
         });
         //Lanzo la obtención del listado de peliculas
-        pUtils.getPelicula(peliculaSelected.getPeliculaId());
+        pUtils.getPelicula(actividad, peliculaSelected.getPeliculaId());
     }
 }

@@ -68,7 +68,7 @@ public class AddFavouriteCinesFragment extends ListFragment {
         });
 
         //Lanzo la obtención del listado de provincias
-        cUtils.getCines(ciudadSelected);
+        cUtils.getCines(getActivity(), ciudadSelected);
     }
 
     @Override

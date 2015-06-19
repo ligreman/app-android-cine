@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Qué echan en el cine</string>
-    <string name="drawer_open">Menu opened</string>
-    <string name="drawer_close">Menu closed</string>
-    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Menú abierto</string>
+    <string name="drawer_close">Menú cerrado</string>
+    <string name="action_settings">Ajustes</string>
     <string name="title_activity_add_favourite">AddFavouriteActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="provincias">Provincias</string>
     <string name="ciudades">Ciudades</string>
     <string name="fav_cine">Cines</string>
@@ -31,4 +30,7 @@
     <string name="nopelis">No hay películas todavía.</string>
     <string name="press_again_to_exit">Pulsa de nuevo para salir</string>
     <string name="addfavourites">Añade cines a tus favoritos mediante el botón +</string>
+    <string name="save">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="promo">Código promocional</string>
 </resources>

@@ -1,14 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.ligresoftware.queechanenelcine.PeliculaDetailActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.ligresoftware.queechanenelcine.PeliculaDetailActivity">
 
     <include
         android:id="@+id/toolbar_actionbar_cine_detail"
         layout="@layout/toolbar_default"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -29,10 +29,10 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:paddingLeft="10dp"
-                android:text="@string/hello_world"
+                android:text=""
                 android:textColor="@color/myPrimaryDarkColor"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/peliculaRowTituloOriginal"
@@ -42,10 +42,10 @@
                 android:layout_marginBottom="10dp"
                 android:inputType="textMultiLine"
                 android:paddingLeft="10dp"
-                android:text="@string/hello_world"
+                android:text=""
                 android:textColor="@color/myTextPrimaryColor"
                 android:textSize="15sp"
-                android:textStyle="italic" />
+                android:textStyle="italic"/>
 
             <RelativeLayout
                 android:id="@+id/peliculaRowDivPortada"
@@ -59,7 +59,7 @@
                     android:id="@+id/peliculaRowPortada"
                     android:layout_width="120dp"
                     android:layout_height="173dp"
-                    android:layout_marginRight="5dp" />
+                    android:layout_marginRight="5dp"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                         android:layout_marginBottom="3dp"
                         android:layout_marginTop="3dp"
                         android:text="Medium Text"
-                        android:textColor="@color/myTextPrimaryColor" />
+                        android:textColor="@color/myTextPrimaryColor"/>
 
                     <TextView
                         android:id="@+id/peliculaRowReparto"
@@ -82,7 +82,7 @@
                         android:layout_below="@+id/peliculaRowDirector"
                         android:layout_marginBottom="3dp"
                         android:text="Medium Text"
-                        android:textColor="@color/myTextPrimaryColor" />
+                        android:textColor="@color/myTextPrimaryColor"/>
 
                     <TextView
                         android:id="@+id/peliculaRowDuracion"
@@ -91,7 +91,7 @@
                         android:layout_below="@+id/peliculaRowReparto"
                         android:layout_marginBottom="3dp"
                         android:text="Medium Text"
-                        android:textColor="@color/myTextPrimaryColor" />
+                        android:textColor="@color/myTextPrimaryColor"/>
 
                     <TextView
                         android:id="@+id/peliculaRowGenero"
@@ -100,7 +100,7 @@
                         android:layout_below="@+id/peliculaRowDuracion"
                         android:layout_marginBottom="3dp"
                         android:text="Medium Text"
-                        android:textColor="@color/myTextPrimaryColor" />
+                        android:textColor="@color/myTextPrimaryColor"/>
 
                     <TextView
                         android:id="@+id/peliculaRowEstreno"
@@ -109,7 +109,7 @@
                         android:layout_below="@+id/peliculaRowGenero"
                         android:layout_marginBottom="3dp"
                         android:text="Medium Text"
-                        android:textColor="@color/myTextPrimaryColor" />
+                        android:textColor="@color/myTextPrimaryColor"/>
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -128,7 +128,7 @@
                     android:text="@string/sinopsis"
                     android:textColor="@color/myPrimaryDarkColor"
                     android:textSize="18sp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -149,7 +149,7 @@
                 android:paddingLeft="15dp"
                 android:text="Lorem im"
                 android:textColor="@color/myTextPrimaryColor"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
             <RelativeLayout
                 android:id="@+id/divReparto"
@@ -166,7 +166,7 @@
                     android:text="@string/reparto"
                     android:textColor="@color/myPrimaryDarkColor"
                     android:textSize="18sp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -187,7 +187,7 @@
                 android:paddingLeft="15dp"
                 android:text="Lorem im"
                 android:textColor="@color/myTextPrimaryColor"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
             <RelativeLayout
                 android:id="@+id/divDetalles"
@@ -204,7 +204,7 @@
                     android:text="@string/detalles"
                     android:textColor="@color/myPrimaryDarkColor"
                     android:textSize="18sp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -225,7 +225,7 @@
                 android:paddingLeft="15dp"
                 android:text="Lorem im"
                 android:textColor="@color/myTextPrimaryColor"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
             <TextView
                 android:id="@+id/peliculaRowEstudio"
@@ -236,7 +236,7 @@
                 android:paddingLeft="15dp"
                 android:text="Lorem im"
                 android:textColor="@color/myTextPrimaryColor"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
         </RelativeLayout>
     </ScrollView>

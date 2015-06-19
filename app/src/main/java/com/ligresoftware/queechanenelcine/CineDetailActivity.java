@@ -84,7 +84,7 @@ public class CineDetailActivity extends ActionBarActivity {
                 populateView(cine);
             }
         });
-        cUtils.getCineDetail(_idCine);
+        cUtils.getCineDetail(actividad, _idCine);
     }
 
     private void populateView(final Cine cine) {

@@ -44,7 +44,7 @@ public class MoviesFragment extends ListFragment {
             }
         });
         //Lanzo la obtención del listado de peliculas
-        pUtils.getPeliculas();
+        pUtils.getPeliculas(getActivity());
     }
 
     @Override

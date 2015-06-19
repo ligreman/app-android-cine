@@ -41,7 +41,7 @@ public class AddFavouriteProvinciasFragment extends ListFragment {
             }
         });
         //Lanzo la obtención del listado de provincias
-        pUtils.getProvincias();
+        pUtils.getProvincias(getActivity());
     }
 
     @Override

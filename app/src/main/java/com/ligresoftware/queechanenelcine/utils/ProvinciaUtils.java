@@ -1,5 +1,6 @@
 package com.ligresoftware.queechanenelcine.utils;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
@@ -9,14 +10,14 @@ import com.ligresoftware.queechanenelcine.models.helpers.ProvinciaList;
 public class ProvinciaUtils {
     private static ProvinciaUtilsCallback mCallback;
 
-    public boolean getProvincias() {
+    public boolean getProvincias(final Context context) {
         AsyncTask<Void, Integer, ProvinciaList> getProvinciasTask =
                 new AsyncTask<Void, Integer, ProvinciaList>() {
                     @Override
                     protected ProvinciaList doInBackground(Void... unused) {
                         try {
 //                            String json = HttpUtils.readUrl("http://localhost/api/cine/ciudades");
-                            String json = HttpUtils.readUrl(Constants.WEBSERVICE_URL + "/api/cine/ciudades");
+                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/cine/ciudades");
                             Gson gson = new Gson();
                             ProvinciaList provinciasGson = gson.fromJson(json, ProvinciaList.class);
 
