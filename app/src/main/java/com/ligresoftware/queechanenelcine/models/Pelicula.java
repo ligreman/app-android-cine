@@ -1,8 +1,11 @@
 package com.ligresoftware.queechanenelcine.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class Pelicula {
+public class Pelicula implements Parcelable {
     private String _id;
     private String titulo;
     private String estreno;
@@ -102,4 +105,51 @@ public class Pelicula {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this._id);
+        dest.writeString(this.titulo);
+        dest.writeString(this.estreno);
+        dest.writeValue(this.anno);
+        dest.writeValue(this.duracion);
+        dest.writeStringList(this.pais);
+        dest.writeStringList(this.genero);
+        dest.writeString(this.sinopsis);
+        dest.writeStringList(this.director);
+        dest.writeStringList(this.reparto);
+        dest.writeString(this.imagen);
+    }
+
+    public Pelicula() {
+    }
+
+    protected Pelicula(Parcel in) {
+        this._id = in.readString();
+        this.titulo = in.readString();
+        this.estreno = in.readString();
+        this.anno = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.duracion = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.pais = in.createStringArrayList();
+        this.genero = in.createStringArrayList();
+        this.sinopsis = in.readString();
+        this.director = in.createStringArrayList();
+        this.reparto = in.createStringArrayList();
+        this.imagen = in.readString();
+    }
+
+    public static final Parcelable.Creator<Pelicula> CREATOR = new Parcelable.Creator<Pelicula>() {
+        public Pelicula createFromParcel(Parcel source) {
+            return new Pelicula(source);
+        }
+
+        public Pelicula[] newArray(int size) {
+            return new Pelicula[size];
+        }
+    };
 }

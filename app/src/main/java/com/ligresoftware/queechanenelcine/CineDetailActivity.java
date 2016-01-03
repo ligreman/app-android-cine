@@ -62,7 +62,7 @@ public class CineDetailActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Sesion sesionSelected = (Sesion) sesiones.get(position);
-                Logger.d("SESION SELECTED", "" + sesionSelected.get_idPelicula());
+                Logger.d("SESION SELECTED", "" + sesionSelected.get_id());
                 //Llamo a la actividad de detalle de la película
 
                 Intent intent = new Intent(actividad, PeliculaDetailActivity.class);
@@ -89,6 +89,7 @@ public class CineDetailActivity extends ActionBarActivity {
 
     private void populateView(final Cine cine) {
         ((TextView) findViewById(R.id.detailDireccionCine)).setText(cine.getDireccion());
+        //TODO el getnombreciudad me está devolviendo null
         ((TextView) findViewById(R.id.detailCiudadCine)).setText(cine.getNombreCiudad() + " - " + cine.getCodigoPostal());
         ((TextView) findViewById(R.id.detailTelefonoCine)).setText("Tlf." + cine.getTelefono());
 

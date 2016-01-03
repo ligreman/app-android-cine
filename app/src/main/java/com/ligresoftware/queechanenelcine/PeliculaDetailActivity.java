@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ligresoftware.queechanenelcine.models.Pelicula;
 import com.ligresoftware.queechanenelcine.models.Sesion;
 import com.ligresoftware.queechanenelcine.utils.MyUtils;
 
@@ -31,7 +32,7 @@ public class PeliculaDetailActivity extends ActionBarActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar_cine_detail);
 
         mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_36dp);
-        mToolbar.setTitle(sesion.getTitulo());
+        mToolbar.setTitle(sesion.getPelicula().getTitulo());
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,20 +45,23 @@ public class PeliculaDetailActivity extends ActionBarActivity {
     }
 
     private void populateView(Sesion sesion) {
-        ((TextView) findViewById(R.id.peliculaRowTitulo)).setText(sesion.getTitulo());
-        ((TextView) findViewById(R.id.peliculaRowDirector)).setText(getString(R.string.director) + " " + MyUtils.implode(sesion.getDirector(), ", "));
-        ((TextView) findViewById(R.id.peliculaRowDuracion)).setText(MyUtils.implode(sesion.getPais(), ", ") + ". " + getDuracion(sesion.getDuracion()));
-        ((TextView) findViewById(R.id.peliculaRowGenero)).setText(MyUtils.implode(sesion.getGenero(), ", "));
-        ((TextView) findViewById(R.id.peliculaRowEstreno)).setText(getString(R.string.estreno) + " " + sesion.getEstreno());
-        ((TextView) findViewById(R.id.peliculaRowSinopsis)).setText(sesion.getSinopsis());
-        ((TextView) findViewById(R.id.peliculaRowRepartoExtendido)).setText(MyUtils.implode(sesion.getReparto(), "\n"));
-        ((TextView) findViewById(R.id.peliculaRowAnno)).setText(getString(R.string.anno) + " " + sesion.getAnno());
+        Pelicula peli = sesion.getPelicula();
+        ((TextView) findViewById(R.id.peliculaRowTitulo)).setText(peli.getTitulo());
+        ((TextView) findViewById(R.id.peliculaRowDirector)).setText(getString(R.string.director) + " " + MyUtils.implode(peli.getDirector(), ", "));
+        ((TextView) findViewById(R.id.peliculaRowDuracion)).setText(MyUtils.implode(peli.getPais(), ", ") + ". " + getDuracion(peli.getDuracion()));
+        ((TextView) findViewById(R.id.peliculaRowGenero)).setText(MyUtils.implode(peli.getGenero(), ", "));
+        ((TextView) findViewById(R.id.peliculaRowEstreno)).setText(getString(R.string.estreno) + " " + peli.getEstreno());
+        ((TextView) findViewById(R.id.peliculaRowSinopsis)).setText(peli.getSinopsis());
+        ((TextView) findViewById(R.id.peliculaRowRepartoExtendido)).setText(MyUtils.implode(peli.getReparto(), "\n"));
+        ((TextView) findViewById(R.id.peliculaRowAnno)).setText(getString(R.string.anno) + " " + peli.getAnno());
 
-        String[] partes = sesion.getImagen().split(",");
-        if (partes.length == 2) {
-            byte[] decodedString = Base64.decode(partes[1].getBytes(), Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            ((ImageView) findViewById(R.id.peliculaRowPortada)).setImageBitmap(bitmap);
+        if (peli.getImagen() != null) {
+            String[] partes = peli.getImagen().split(",");
+            if (partes.length == 2) {
+                byte[] decodedString = Base64.decode(partes[1].getBytes(), Base64.DEFAULT);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                ((ImageView) findViewById(R.id.peliculaRowPortada)).setImageBitmap(bitmap);
+            }
         }
     }
 

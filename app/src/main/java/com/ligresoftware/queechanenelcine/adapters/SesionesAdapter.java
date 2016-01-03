@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ligresoftware.queechanenelcine.R;
+import com.ligresoftware.queechanenelcine.models.Pelicula;
 import com.ligresoftware.queechanenelcine.models.Sesion;
 import com.ligresoftware.queechanenelcine.utils.MyUtils;
 
@@ -30,6 +31,7 @@ public class SesionesAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         Sesion item = (Sesion) getItem(position);
+        Pelicula peli = item.getPelicula();
         View viewToUse = null;
 
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -45,7 +47,10 @@ public class SesionesAdapter extends ArrayAdapter {
             holder.titulo = (TextView) viewToUse.findViewById(R.id.sesionesRowTitulo);
             holder.duracion = (TextView) viewToUse.findViewById(R.id.sesionesRowDuracion);
             holder.genero = (TextView) viewToUse.findViewById(R.id.sesionesRowGenero);
+            holder.horariostitle = (TextView) viewToUse.findViewById(R.id.sesionesRowHorariosTitle);
             holder.horarios = (TextView) viewToUse.findViewById(R.id.sesionesRowHorarios);
+            holder.horarios3Dtitle = (TextView) viewToUse.findViewById(R.id.sesionesRowHorarios3dTitle);
+            holder.horarios3D = (TextView) viewToUse.findViewById(R.id.sesionesRowHorarios3d);
             viewToUse.setTag(holder);
         } else {
             viewToUse = convertView;
@@ -53,8 +58,8 @@ public class SesionesAdapter extends ArrayAdapter {
         }
 
         //La imagen
-        if (item.getImagen() != null) {
-            String[] partes = item.getImagen().split(",");
+        if (peli.getImagen() != null) {
+            String[] partes = peli.getImagen().split(",");
 
             if (partes.length == 2) {
                 byte[] decodedString = Base64.decode(partes[1].getBytes(), Base64.DEFAULT);
@@ -64,10 +69,20 @@ public class SesionesAdapter extends ArrayAdapter {
         }
 
         //Relleno los datos
-        holder.titulo.setText(item.getTitulo());
-        holder.duracion.setText(context.getString(R.string.duracion) + " " + item.getDuracion() + " " + context.getString(R.string.minutos));
-        holder.genero.setText(MyUtils.implode(item.getGenero(), ", "));
-        holder.horarios.setText(MyUtils.implode(item.getHorarios(), "  "));
+        holder.titulo.setText(peli.getTitulo());
+        holder.duracion.setText(peli.getDuracion() + " " + context.getString(R.string.minutos));
+//        holder.duracion.setText(context.getString(R.string.duracion) + " " + peli.getDuracion() + " " + context.getString(R.string.minutos));
+        holder.genero.setText(MyUtils.implode(peli.getGenero(), ", "));
+
+        if (!item.getHorarios().isEmpty()) {
+            holder.horariostitle.setText(context.getString(R.string.horarios));
+            holder.horarios.setText(MyUtils.implode(item.getHorarios(), "  "));
+        }
+
+        if (!item.getHorarios3D().isEmpty()) {
+            holder.horarios3Dtitle.setText(context.getString(R.string.horarios3d));
+            holder.horarios3D.setText(MyUtils.implode(item.getHorarios3D(), "  "));
+        }
 
         return viewToUse;
     }
@@ -81,5 +96,8 @@ public class SesionesAdapter extends ArrayAdapter {
         TextView duracion;
         TextView genero;
         TextView horarios;
+        TextView horariostitle;
+        TextView horarios3D;
+        TextView horarios3Dtitle;
     }
 }

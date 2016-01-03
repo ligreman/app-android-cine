@@ -202,7 +202,8 @@ public class MainActivity extends ActionBarActivity
                 Pelicula p = peliculaUnit.getPelicula();
 
                 Sesion sesion = new Sesion();
-                sesion.set_idPelicula(p.get_id());
+                sesion.setPelicula(p);
+                /*sesion.set_idPelicula(p.get_id());
                 sesion.setTitulo(p.getTitulo());
                 sesion.setDirector(p.getDirector());
                 sesion.setReparto(p.getReparto());
@@ -212,7 +213,7 @@ public class MainActivity extends ActionBarActivity
                 sesion.setEstreno(p.getEstreno());
                 sesion.setSinopsis(p.getSinopsis());
                 sesion.setAnno(p.getAnno());
-                sesion.setImagen(p.getImagen());
+                sesion.setImagen(p.getImagen());*/
 
                 //Cargo la actividad
                 Intent intent = new Intent(actividad, PeliculaDetailActivity.class);

@@ -6,7 +6,12 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class Sesion implements Parcelable {
-    private String _idPelicula;
+    private String _id;
+    private Pelicula pelicula;
+    private ArrayList<String> horarios;
+    private ArrayList<String> horarios3D;
+
+    /*private String _idPelicula;
     private ArrayList<String> horarios;
     private String titulo;
     private String estreno;
@@ -17,14 +22,22 @@ public class Sesion implements Parcelable {
     private String sinopsis;
     private ArrayList<String> director;
     private ArrayList<String> reparto;
-    private String imagen;
+    private String imagen;*/
 
-    public String get_idPelicula() {
-        return _idPelicula;
+    public String get_id() {
+        return _id;
     }
 
-    public void set_idPelicula(String _idPelicula) {
-        this._idPelicula = _idPelicula;
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+
+    public void setPelicula(Pelicula pelicula) {
+        this.pelicula = pelicula;
     }
 
     public ArrayList<String> getHorarios() {
@@ -35,84 +48,12 @@ public class Sesion implements Parcelable {
         this.horarios = horarios;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public ArrayList<String> getHorarios3D() {
+        return horarios3D;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getEstreno() {
-        return estreno;
-    }
-
-    public void setEstreno(String estreno) {
-        this.estreno = estreno;
-    }
-
-    public Integer getAnno() {
-        return anno;
-    }
-
-    public void setAnno(Integer anno) {
-        this.anno = anno;
-    }
-
-    public Integer getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(Integer duracion) {
-        this.duracion = duracion;
-    }
-
-    public ArrayList<String> getPais() {
-        return pais;
-    }
-
-    public void setPais(ArrayList<String> pais) {
-        this.pais = pais;
-    }
-
-    public ArrayList<String> getGenero() {
-        return genero;
-    }
-
-    public void setGenero(ArrayList<String> genero) {
-        this.genero = genero;
-    }
-
-    public String getSinopsis() {
-        return sinopsis;
-    }
-
-    public void setSinopsis(String sinopsis) {
-        this.sinopsis = sinopsis;
-    }
-
-    public ArrayList<String> getDirector() {
-        return director;
-    }
-
-    public void setDirector(ArrayList<String> director) {
-        this.director = director;
-    }
-
-    public ArrayList<String> getReparto() {
-        return reparto;
-    }
-
-    public void setReparto(ArrayList<String> reparto) {
-        this.reparto = reparto;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setHorarios3D(ArrayList<String> horarios3D) {
+        this.horarios3D = horarios3D;
     }
 
     @Override
@@ -122,36 +63,20 @@ public class Sesion implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this._idPelicula);
+        dest.writeString(this._id);
+        dest.writeParcelable(this.pelicula, flags);
         dest.writeSerializable(this.horarios);
-        dest.writeString(this.titulo);
-        dest.writeString(this.estreno);
-        dest.writeValue(this.anno);
-        dest.writeValue(this.duracion);
-        dest.writeSerializable(this.pais);
-        dest.writeSerializable(this.genero);
-        dest.writeString(this.sinopsis);
-        dest.writeSerializable(this.director);
-        dest.writeSerializable(this.reparto);
-        dest.writeString(this.imagen);
+        dest.writeSerializable(this.horarios3D);
     }
 
     public Sesion() {
     }
 
     private Sesion(Parcel in) {
-        this._idPelicula = in.readString();
+        this._id = in.readString();
+        this.pelicula = in.readParcelable(Pelicula.class.getClassLoader());
         this.horarios = (ArrayList<String>) in.readSerializable();
-        this.titulo = in.readString();
-        this.estreno = in.readString();
-        this.anno = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.duracion = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.pais = (ArrayList<String>) in.readSerializable();
-        this.genero = (ArrayList<String>) in.readSerializable();
-        this.sinopsis = in.readString();
-        this.director = (ArrayList<String>) in.readSerializable();
-        this.reparto = (ArrayList<String>) in.readSerializable();
-        this.imagen = in.readString();
+        this.horarios3D = (ArrayList<String>) in.readSerializable();
     }
 
     public static final Parcelable.Creator<Sesion> CREATOR = new Parcelable.Creator<Sesion>() {

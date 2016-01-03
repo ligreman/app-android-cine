@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingBottom="10dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/sesionesRowPortada"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="120dp"
+        android:layout_height="173dp"
+        />
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/sesionesRowPortada"
         android:paddingLeft="10dp">
 
@@ -23,15 +24,17 @@
             android:text="Large Text"
             android:textColor="@color/myTextPrimaryColor"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/sesionesRowDuracion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_below="@+id/sesionesRowTitulo"
             android:text="Large Text"
-            android:textColor="@color/myTextPrimaryColor" />
+            android:textColor="@color/myTextPrimaryColor"
+            android:textStyle="italic"/>
 
         <TextView
             android:id="@+id/sesionesRowGenero"
@@ -39,15 +42,38 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/sesionesRowDuracion"
             android:text="Large Text"
-            android:textColor="@color/myTextPrimaryColor" />
+            android:textColor="@color/myTextPrimaryColor"/>
+
+        <TextView
+            android:id="@+id/sesionesRowHorariosTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sesionesRowGenero"
+            android:textColor="@color/myTextPrimaryColor"
+            />
 
         <TextView
             android:id="@+id/sesionesRowHorarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/sesionesRowGenero"
-            android:text="Large Text"
-            android:textColor="@color/myTextPrimaryColor" />
+            android:layout_below="@+id/sesionesRowHorariosTitle"
+            android:textColor="@color/myTextPrimaryColor"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:id="@+id/sesionesRowHorarios3dTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sesionesRowHorarios"
+            android:textColor="@color/myTextPrimaryColor"/>
+
+        <TextView
+            android:id="@+id/sesionesRowHorarios3d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sesionesRowHorarios3dTitle"
+            android:textColor="@color/myTextPrimaryColor"
+            android:layout_marginLeft="10dp"/>
 
     </RelativeLayout>
 
