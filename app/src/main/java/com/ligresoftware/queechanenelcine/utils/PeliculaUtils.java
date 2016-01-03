@@ -17,7 +17,7 @@ public class PeliculaUtils {
                     @Override
                     protected PeliculaList doInBackground(Void... unused) {
                         try {
-                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/cine/peliculas");
+                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/peliculas");
 
                             Gson gson = new Gson();
                             PeliculaList pelisGson = gson.fromJson(json, PeliculaList.class);
@@ -57,7 +57,7 @@ public class PeliculaUtils {
                     @Override
                     protected PeliculaUnit doInBackground(Void... unused) {
                         try {
-                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/cine/peliculas/" + peliculaId);
+                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/peliculas/" + peliculaId);
 
                             Gson gson = new Gson();
                             PeliculaUnit peliGson = gson.fromJson(json, PeliculaUnit.class);

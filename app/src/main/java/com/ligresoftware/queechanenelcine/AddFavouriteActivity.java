@@ -83,7 +83,7 @@ public class AddFavouriteActivity extends ActionBarActivity
         switch (mCurrentFragment) {
             case "AddFavoritosProvincias":
                 setResult(RESULT_OK);
-                Logger.d("----BACK----", "Provi");
+                Logger.d("----BACK----", "provincia");
                 this.finish();
                 break;
 
@@ -91,7 +91,7 @@ public class AddFavouriteActivity extends ActionBarActivity
                 //Si vengo del fragmento de ciudades pongo el titulo de Provincias
                 mToolbar.setTitle(getString(R.string.provincias));
                 mCurrentFragment = "AddFavoritosProvincias";
-                Logger.d("----BACK----", "Ciu");
+                Logger.d("----BACK----", "ciudad");
                 break;
 
             case "AddFavoritosCines":

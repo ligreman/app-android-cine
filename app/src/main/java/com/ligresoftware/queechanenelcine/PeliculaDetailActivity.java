@@ -45,15 +45,12 @@ public class PeliculaDetailActivity extends ActionBarActivity {
 
     private void populateView(Sesion sesion) {
         ((TextView) findViewById(R.id.peliculaRowTitulo)).setText(sesion.getTitulo());
-        ((TextView) findViewById(R.id.peliculaRowTituloOriginal)).setText(sesion.getTituloOriginal());
         ((TextView) findViewById(R.id.peliculaRowDirector)).setText(getString(R.string.director) + " " + MyUtils.implode(sesion.getDirector(), ", "));
-        ((TextView) findViewById(R.id.peliculaRowReparto)).setText(MyUtils.implode(sesion.getReparto(), ", "));
         ((TextView) findViewById(R.id.peliculaRowDuracion)).setText(MyUtils.implode(sesion.getPais(), ", ") + ". " + getDuracion(sesion.getDuracion()));
         ((TextView) findViewById(R.id.peliculaRowGenero)).setText(MyUtils.implode(sesion.getGenero(), ", "));
         ((TextView) findViewById(R.id.peliculaRowEstreno)).setText(getString(R.string.estreno) + " " + sesion.getEstreno());
         ((TextView) findViewById(R.id.peliculaRowSinopsis)).setText(sesion.getSinopsis());
-        ((TextView) findViewById(R.id.peliculaRowRepartoExtendido)).setText(MyUtils.implode(sesion.getRepartoExtendido(), "\n"));
-        ((TextView) findViewById(R.id.peliculaRowEstudio)).setText(getString(R.string.estudio) + " " + MyUtils.implode(sesion.getEstudio(), ", "));
+        ((TextView) findViewById(R.id.peliculaRowRepartoExtendido)).setText(MyUtils.implode(sesion.getReparto(), "\n"));
         ((TextView) findViewById(R.id.peliculaRowAnno)).setText(getString(R.string.anno) + " " + sesion.getAnno());
 
         String[] partes = sesion.getImagen().split(",");

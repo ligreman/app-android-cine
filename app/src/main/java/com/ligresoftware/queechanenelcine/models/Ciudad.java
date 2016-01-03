@@ -5,7 +5,6 @@ import android.os.Parcelable;
 
 public class Ciudad implements Parcelable {
     private String _id;
-    private String ciudadId;
     private String nombre;
 
     public String get_id() {
@@ -14,14 +13,6 @@ public class Ciudad implements Parcelable {
 
     public void set_id(String id) {
         this._id = id;
-    }
-
-    public String getCiudadId() {
-        return ciudadId;
-    }
-
-    public void setCiudadId(String ciudadId) {
-        this.ciudadId = ciudadId;
     }
 
     public String getNombre() {
@@ -40,7 +31,6 @@ public class Ciudad implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this._id);
-        dest.writeString(this.ciudadId);
         dest.writeString(this.nombre);
     }
 
@@ -49,7 +39,6 @@ public class Ciudad implements Parcelable {
 
     private Ciudad(Parcel in) {
         this._id = in.readString();
-        this.ciudadId = in.readString();
         this.nombre = in.readString();
     }
 

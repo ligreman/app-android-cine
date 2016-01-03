@@ -1,14 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.ligresoftware.queechanenelcine.CineDetailActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.ligresoftware.queechanenelcine.CineDetailActivity">
 
     <include
         android:id="@+id/toolbar_actionbar_cine_detail"
         layout="@layout/toolbar_default"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
     <RelativeLayout
         android:id="@+id/divDatosCine"
@@ -28,7 +28,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="15dp"
             android:src="@drawable/ic_place_black_48dp"
-            android:tint="@color/myAccentColor" />
+            android:tint="@color/myAccentColor"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,35 +41,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="18dp"
                 android:text=""
-                android:textColor="@color/myTextPrimaryColor" />
+                android:textColor="@color/myTextPrimaryColor"/>
 
             <TextView
                 android:id="@+id/detailCiudadCine"
                 android:layout_width="match_parent"
                 android:layout_height="18dp"
                 android:text=""
-                android:textColor="@color/myTextPrimaryColor" />
+                android:textColor="@color/myTextPrimaryColor"/>
 
             <TextView
                 android:id="@+id/detailTelefonoCine"
                 android:layout_width="match_parent"
                 android:layout_height="18dp"
                 android:text=""
-                android:textColor="@color/myTextPrimaryColor" />
-
-            <ScrollView
-                android:id="@+id/scrollView2"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:scrollbarAlwaysDrawVerticalTrack="true">
-
-                <TextView
-                    android:id="@+id/detailPrecioCine"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@color/myTextPrimaryColor" />
-            </ScrollView>
+                android:textColor="@color/myTextPrimaryColor"/>
 
         </LinearLayout>
     </RelativeLayout>
@@ -90,7 +76,7 @@
             android:text="@string/cartelera"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/myPrimaryDarkColor"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -116,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:indeterminate="true" />
+            android:indeterminate="true"/>
 
     </RelativeLayout>
 
@@ -128,7 +114,7 @@
         android:divider="@null"
         android:dividerHeight="0dp"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp" />
+        android:paddingRight="10dp"/>
 
     <TextView
         android:id="@+id/cineDetailNoSesion"
@@ -139,6 +125,6 @@
         android:text="@string/nodata"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/myTextPrimaryColor"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
 </RelativeLayout>

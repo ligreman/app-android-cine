@@ -203,9 +203,7 @@ public class MainActivity extends ActionBarActivity
 
                 Sesion sesion = new Sesion();
                 sesion.set_idPelicula(p.get_id());
-                sesion.setPeliculaId(p.getPeliculaId());
                 sesion.setTitulo(p.getTitulo());
-                sesion.setTituloOriginal(p.getTituloOriginal());
                 sesion.setDirector(p.getDirector());
                 sesion.setReparto(p.getReparto());
                 sesion.setPais(p.getPais());
@@ -213,8 +211,6 @@ public class MainActivity extends ActionBarActivity
                 sesion.setGenero(p.getGenero());
                 sesion.setEstreno(p.getEstreno());
                 sesion.setSinopsis(p.getSinopsis());
-                sesion.setRepartoExtendido(p.getRepartoExtendido());
-                sesion.setEstudio(p.getEstudio());
                 sesion.setAnno(p.getAnno());
                 sesion.setImagen(p.getImagen());
 
@@ -225,6 +221,6 @@ public class MainActivity extends ActionBarActivity
             }
         });
         //Lanzo la obtención del listado de peliculas
-        pUtils.getPelicula(actividad, peliculaSelected.getPeliculaId());
+        pUtils.getPelicula(actividad, peliculaSelected.get_id());
     }
 }

@@ -4,14 +4,12 @@ import java.util.ArrayList;
 
 public class Cine {
     private String _id;
-    private String cineId;
     private String nombre;
     private String _idCiudad;
     private String nombreCiudad;
     private String direccion;
     private Integer codigoPostal;
     private String telefono;
-    private String precio;
     private Float coordLatitud;
     private Float coordLongitud;
     private ArrayList<Sesion> sesiones;
@@ -23,14 +21,6 @@ public class Cine {
 
     public void set_id(String _id) {
         this._id = _id;
-    }
-
-    public String getCineId() {
-        return cineId;
-    }
-
-    public void setCineId(String cineId) {
-        this.cineId = cineId;
     }
 
     public String get_idCiudad() {
@@ -79,14 +69,6 @@ public class Cine {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
-    }
-
-    public String getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(String precio) {
-        this.precio = precio;
     }
 
     public Float getCoordLatitud() {

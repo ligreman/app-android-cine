@@ -18,8 +18,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar_actionbar_cine_detail"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp">
 
@@ -27,31 +27,16 @@
                 android:id="@+id/peliculaRowTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:paddingLeft="10dp"
                 android:text=""
                 android:textColor="@color/myPrimaryDarkColor"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/peliculaRowTituloOriginal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/peliculaRowTitulo"
-                android:layout_marginBottom="10dp"
-                android:inputType="textMultiLine"
-                android:paddingLeft="10dp"
-                android:text=""
-                android:textColor="@color/myTextPrimaryColor"
-                android:textSize="15sp"
-                android:textStyle="italic"/>
-
             <RelativeLayout
                 android:id="@+id/peliculaRowDivPortada"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/peliculaRowTituloOriginal"
+                android:layout_below="@+id/peliculaRowTitulo"
                 android:layout_marginBottom="10dp"
                 android:paddingLeft="5dp">
 
@@ -76,22 +61,13 @@
                         android:textColor="@color/myTextPrimaryColor"/>
 
                     <TextView
-                        android:id="@+id/peliculaRowReparto"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/peliculaRowDirector"
-                        android:layout_marginBottom="3dp"
-                        android:text="Medium Text"
-                        android:textColor="@color/myTextPrimaryColor"/>
-
-                    <TextView
                         android:id="@+id/peliculaRowDuracion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/peliculaRowReparto"
                         android:layout_marginBottom="3dp"
                         android:text="Medium Text"
-                        android:textColor="@color/myTextPrimaryColor"/>
+                        android:textColor="@color/myTextPrimaryColor"
+                        android:layout_below="@+id/peliculaRowDirector"/>
 
                     <TextView
                         android:id="@+id/peliculaRowGenero"
@@ -110,6 +86,15 @@
                         android:layout_marginBottom="3dp"
                         android:text="Medium Text"
                         android:textColor="@color/myTextPrimaryColor"/>
+
+                    <TextView
+                        android:id="@+id/peliculaRowAnno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/peliculaRowEstreno"
+                        android:layout_marginBottom="3dp"
+                        android:text="Medium Text"
+                        android:textColor="@color/myTextPrimaryColor"/>
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -119,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/peliculaRowDivPortada"
                 android:paddingBottom="5dp"
-                android:paddingLeft="10dp">
+                >
 
                 <TextView
                     android:id="@+id/SinopsisTitle"
@@ -146,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/divSinopsis"
                 android:layout_marginBottom="5dp"
-                android:paddingLeft="15dp"
+                android:paddingLeft="5dp"
                 android:text="Lorem im"
                 android:textColor="@color/myTextPrimaryColor"
                 android:textSize="15sp"/>
@@ -157,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/peliculaRowSinopsis"
                 android:paddingBottom="5dp"
-                android:paddingLeft="10dp">
+                >
 
                 <TextView
                     android:id="@+id/RepartoTitle"
@@ -184,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/divReparto"
                 android:layout_marginBottom="5dp"
-                android:paddingLeft="15dp"
+                android:paddingLeft="5dp"
                 android:text="Lorem im"
                 android:textColor="@color/myTextPrimaryColor"
                 android:textSize="15sp"/>
@@ -195,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/peliculaRowRepartoExtendido"
                 android:paddingBottom="5dp"
-                android:paddingLeft="10dp">
+                >
 
                 <TextView
                     android:id="@+id/DetallesTitle"
@@ -215,28 +200,6 @@
                     android:layout_toRightOf="@+id/DetallesTitle"
                     android:background="@color/myPrimaryDarkColor"></RelativeLayout>
             </RelativeLayout>
-
-            <TextView
-                android:id="@+id/peliculaRowAnno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/divDetalles"
-                android:layout_marginBottom="5dp"
-                android:paddingLeft="15dp"
-                android:text="Lorem im"
-                android:textColor="@color/myTextPrimaryColor"
-                android:textSize="15sp"/>
-
-            <TextView
-                android:id="@+id/peliculaRowEstudio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/peliculaRowAnno"
-                android:layout_marginBottom="10dp"
-                android:paddingLeft="15dp"
-                android:text="Lorem im"
-                android:textColor="@color/myTextPrimaryColor"
-                android:textSize="15sp"/>
 
         </RelativeLayout>
     </ScrollView>

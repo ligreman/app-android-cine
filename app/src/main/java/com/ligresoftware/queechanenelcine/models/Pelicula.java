@@ -4,19 +4,15 @@ import java.util.ArrayList;
 
 public class Pelicula {
     private String _id;
-    private String peliculaId;
     private String titulo;
-    private String tituloOriginal;
     private String estreno;
     private Integer anno;
     private Integer duracion;
     private ArrayList<String> pais;
     private ArrayList<String> genero;
-    private ArrayList<String> estudio;
     private String sinopsis;
     private ArrayList<String> director;
     private ArrayList<String> reparto;
-    private ArrayList<String> repartoExtendido;
     private String imagen;
 
     public String get_id() {
@@ -27,28 +23,12 @@ public class Pelicula {
         this._id = _id;
     }
 
-    public String getPeliculaId() {
-        return peliculaId;
-    }
-
-    public void setPeliculaId(String peliculaId) {
-        this.peliculaId = peliculaId;
-    }
-
     public String getTitulo() {
         return titulo;
     }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public String getTituloOriginal() {
-        return tituloOriginal;
-    }
-
-    public void setTituloOriginal(String tituloOriginal) {
-        this.tituloOriginal = tituloOriginal;
     }
 
     public String getEstreno() {
@@ -91,14 +71,6 @@ public class Pelicula {
         this.genero = genero;
     }
 
-    public ArrayList<String> getEstudio() {
-        return estudio;
-    }
-
-    public void setEstudio(ArrayList<String> estudio) {
-        this.estudio = estudio;
-    }
-
     public String getSinopsis() {
         return sinopsis;
     }
@@ -121,14 +93,6 @@ public class Pelicula {
 
     public void setReparto(ArrayList<String> reparto) {
         this.reparto = reparto;
-    }
-
-    public ArrayList<String> getRepartoExtendido() {
-        return repartoExtendido;
-    }
-
-    public void setRepartoExtendido(ArrayList<String> repartoExtendido) {
-        this.repartoExtendido = repartoExtendido;
     }
 
     public String getImagen() {

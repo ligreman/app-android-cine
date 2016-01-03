@@ -8,7 +8,7 @@ public class Constants {
     public static final int REQUEST_CODE_ADD_FAVOURITES = 1001;
 
     //URL del webservice
-    public static final String WEBSERVICE_URL = "http://trex-lovehinaesp.rhcloud.com"; //https://demo0064908.mockable.io
+    public static final String WEBSERVICE_URL = "http://cine-crystaltales.rhcloud.com"; //https://demo0064908.mockable.io
 
     public static final String PARCELABLE_PROVINCIA = "PARCELABLE_PROVINCIA";
     public static final String PARCELABLE_CIUDAD = "PARCELABLE_CIUDAD";

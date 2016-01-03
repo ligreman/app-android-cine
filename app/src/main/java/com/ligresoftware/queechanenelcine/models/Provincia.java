@@ -7,10 +7,8 @@ import java.util.ArrayList;
 
 public class Provincia implements Parcelable {
     private String _id;
-    private String provinciaId;
     private String nombre;
     private ArrayList<Ciudad> ciudades;
-    private Long actualizado;
 
     public String get_id() {
         return _id;
@@ -18,14 +16,6 @@ public class Provincia implements Parcelable {
 
     public void set_id(String _id) {
         this._id = _id;
-    }
-
-    public String getProvinciaId() {
-        return provinciaId;
-    }
-
-    public void setProvinciaId(String provinciaId) {
-        this.provinciaId = provinciaId;
     }
 
     public String getNombre() {
@@ -44,14 +34,6 @@ public class Provincia implements Parcelable {
         this.ciudades = ciudades;
     }
 
-    public Long getActualizado() {
-        return actualizado;
-    }
-
-    public void setActualizado(Long actualizado) {
-        this.actualizado = actualizado;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -60,10 +42,8 @@ public class Provincia implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this._id);
-        dest.writeString(this.provinciaId);
         dest.writeString(this.nombre);
         dest.writeSerializable(this.ciudades);
-        dest.writeValue(this.actualizado);
     }
 
     public Provincia() {
@@ -71,10 +51,8 @@ public class Provincia implements Parcelable {
 
     private Provincia(Parcel in) {
         this._id = in.readString();
-        this.provinciaId = in.readString();
         this.nombre = in.readString();
         this.ciudades = (ArrayList<Ciudad>) in.readSerializable();
-        this.actualizado = (Long) in.readValue(Long.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<Provincia> CREATOR = new Parcelable.Creator<Provincia>() {

@@ -20,8 +20,8 @@ public class CineUtils {
                     @Override
                     protected CineList doInBackground(Void... unused) {
                         try {
-                            Logger.d("CINEUTILS", "Las pido de: " + ciudad.getCiudadId() + " ** " + ciudad.get_id());
-                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/cine/ciudades/" + ciudad.get_id()); //075120b9d524ae8a681fb8fc02ee00d7
+                            Logger.d("CINEUTILS", "Las pido de: " + ciudad.get_id());
+                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/provincias/ciudad/" + ciudad.get_id()); //075120b9d524ae8a681fb8fc02ee00d7
 
                             Gson gson = new Gson();
                             CineList cinesGson = gson.fromJson(json, CineList.class);
@@ -61,7 +61,7 @@ public class CineUtils {
                     @Override
                     protected Cine doInBackground(Void... unused) {
                         try {
-                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/cine/cines/" + idCine); //4a5a5de58b2b50e7ff48dbb669f6be03
+                            String json = HttpUtils.readUrl(context, Constants.WEBSERVICE_URL + "/api/cines/" + idCine); //4a5a5de58b2b50e7ff48dbb669f6be03
 
                             Gson gson = new Gson();
                             CineUnit cineGson = gson.fromJson(json, CineUnit.class);

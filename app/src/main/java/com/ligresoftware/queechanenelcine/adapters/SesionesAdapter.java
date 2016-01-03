@@ -53,11 +53,14 @@ public class SesionesAdapter extends ArrayAdapter {
         }
 
         //La imagen
-        String[] partes = item.getImagen().split(",");
-        if (partes.length == 2) {
-            byte[] decodedString = Base64.decode(partes[1].getBytes(), Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            holder.portada.setImageBitmap(bitmap);
+        if (item.getImagen() != null) {
+            String[] partes = item.getImagen().split(",");
+
+            if (partes.length == 2) {
+                byte[] decodedString = Base64.decode(partes[1].getBytes(), Base64.DEFAULT);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                holder.portada.setImageBitmap(bitmap);
+            }
         }
 
         //Relleno los datos
