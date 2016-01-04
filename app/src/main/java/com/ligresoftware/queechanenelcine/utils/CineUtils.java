@@ -65,7 +65,6 @@ public class CineUtils {
 
                             Gson gson = new Gson();
                             CineUnit cineGson = gson.fromJson(json, CineUnit.class);
-                            Logger.d("", "");
                             return cineGson.getCine();
                         } catch (Exception e) {
                             e.printStackTrace();

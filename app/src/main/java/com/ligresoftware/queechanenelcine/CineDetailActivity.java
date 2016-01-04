@@ -91,7 +91,7 @@ public class CineDetailActivity extends ActionBarActivity {
         ((TextView) findViewById(R.id.detailDireccionCine)).setText(cine.getDireccion());
         //TODO el getnombreciudad me está devolviendo null
         ((TextView) findViewById(R.id.detailCiudadCine)).setText(cine.getNombreCiudad() + " - " + cine.getCodigoPostal());
-        ((TextView) findViewById(R.id.detailTelefonoCine)).setText("Tlf." + cine.getTelefono());
+        ((TextView) findViewById(R.id.detailTelefonoCine)).setText(getString(R.string.telefonoAbbr) + cine.getTelefono());
 
         //Las coordenadas del cine
         setGoogleMapsCoords(cine.getCoordLatitud(), cine.getCoordLongitud(), cineName);

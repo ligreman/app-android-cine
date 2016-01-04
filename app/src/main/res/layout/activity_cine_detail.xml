@@ -39,23 +39,26 @@
             <TextView
                 android:id="@+id/detailDireccionCine"
                 android:layout_width="match_parent"
-                android:layout_height="18dp"
-                android:text=""
-                android:textColor="@color/myTextPrimaryColor"/>
+                android:layout_height="22dp"
+                android:textColor="@color/myTextPrimaryColor"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/detailCiudadCine"
                 android:layout_width="match_parent"
-                android:layout_height="18dp"
+                android:layout_height="22dp"
                 android:text=""
-                android:textColor="@color/myTextPrimaryColor"/>
+                android:textColor="@color/myTextPrimaryColor"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/detailTelefonoCine"
                 android:layout_width="match_parent"
-                android:layout_height="18dp"
+                android:layout_height="22dp"
                 android:text=""
-                android:textColor="@color/myTextPrimaryColor"/>
+                android:textColor="@color/myTextPrimaryColor"
+                android:autoLink="phone"
+                android:textSize="18sp"/>
 
         </LinearLayout>
     </RelativeLayout>
