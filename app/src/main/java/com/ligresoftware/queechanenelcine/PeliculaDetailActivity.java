@@ -49,11 +49,19 @@ public class PeliculaDetailActivity extends ActionBarActivity {
         ((TextView) findViewById(R.id.peliculaRowTitulo)).setText(peli.getTitulo());
         ((TextView) findViewById(R.id.peliculaRowDirector)).setText(getString(R.string.director) + " " + MyUtils.implode(peli.getDirector(), ", "));
         ((TextView) findViewById(R.id.peliculaRowDuracion)).setText(MyUtils.implode(peli.getPais(), ", ") + ". " + getDuracion(peli.getDuracion()));
-        ((TextView) findViewById(R.id.peliculaRowGenero)).setText(MyUtils.implode(peli.getGenero(), ", "));
         ((TextView) findViewById(R.id.peliculaRowEstreno)).setText(getString(R.string.estreno) + " " + peli.getEstreno());
         ((TextView) findViewById(R.id.peliculaRowSinopsis)).setText(peli.getSinopsis());
         ((TextView) findViewById(R.id.peliculaRowRepartoExtendido)).setText(MyUtils.implode(peli.getReparto(), "\n"));
         ((TextView) findViewById(R.id.peliculaRowAnno)).setText(getString(R.string.anno) + " " + peli.getAnno());
+
+        TextView genView = ((TextView) findViewById(R.id.peliculaRowGenero));
+        String genero = MyUtils.implode(peli.getGenero(), ", ");
+        if (!genero.isEmpty()) {
+            genView.setText(genero);
+            genView.setVisibility(View.VISIBLE);
+        } else {
+            genView.setVisibility(View.GONE);
+        }
 
         if (peli.getImagen() != null) {
             String[] partes = peli.getImagen().split(",");

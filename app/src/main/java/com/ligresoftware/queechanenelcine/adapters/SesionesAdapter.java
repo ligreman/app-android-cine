@@ -77,11 +77,25 @@ public class SesionesAdapter extends ArrayAdapter {
         if (!item.getHorarios().isEmpty()) {
             holder.horariostitle.setText(context.getString(R.string.horarios));
             holder.horarios.setText(MyUtils.implode(item.getHorarios(), "  "));
+            holder.horariostitle.setVisibility(View.VISIBLE);
+            holder.horarios.setVisibility(View.VISIBLE);
+        } else {
+            holder.horariostitle.setText("");
+            holder.horarios.setText("");
+            holder.horariostitle.setVisibility(View.GONE);
+            holder.horarios.setVisibility(View.GONE);
         }
 
         if (!item.getHorarios3D().isEmpty()) {
             holder.horarios3Dtitle.setText(context.getString(R.string.horarios3d));
             holder.horarios3D.setText(MyUtils.implode(item.getHorarios3D(), "  "));
+            holder.horarios3Dtitle.setVisibility(View.VISIBLE);
+            holder.horarios3D.setVisibility(View.VISIBLE);
+        } else {
+            holder.horarios3Dtitle.setText("");
+            holder.horarios3D.setText("");
+            holder.horarios3Dtitle.setVisibility(View.GONE);
+            holder.horarios3D.setVisibility(View.GONE);
         }
 
         return viewToUse;

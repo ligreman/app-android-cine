@@ -8,6 +8,7 @@ public class Cine {
     private String _idCiudad;
     private String nombreCiudad;
     private String direccion;
+    private String urlCompraOnline;
     private Integer codigoPostal;
     private String telefono;
     private Float coordLatitud;
@@ -101,5 +102,13 @@ public class Cine {
 
     public void setActualizado(Long actualizado) {
         this.actualizado = actualizado;
+    }
+
+    public String getUrlCompraOnline() {
+        return urlCompraOnline;
+    }
+
+    public void setUrlCompraOnline(String urlCompraOnline) {
+        this.urlCompraOnline = urlCompraOnline;
     }
 }

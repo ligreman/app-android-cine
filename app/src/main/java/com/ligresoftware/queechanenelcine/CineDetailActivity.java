@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -89,9 +91,14 @@ public class CineDetailActivity extends ActionBarActivity {
 
     private void populateView(final Cine cine) {
         ((TextView) findViewById(R.id.detailDireccionCine)).setText(cine.getDireccion());
-        //TODO el getnombreciudad me está devolviendo null
         ((TextView) findViewById(R.id.detailCiudadCine)).setText(cine.getNombreCiudad() + " - " + cine.getCodigoPostal());
-        ((TextView) findViewById(R.id.detailTelefonoCine)).setText(getString(R.string.telefonoAbbr) + cine.getTelefono());
+        ((TextView) findViewById(R.id.detailTelefonoCine)).setText(getString(R.string.telefonoAbbr) + " " + cine.getTelefono());
+
+        TextView textView = ((TextView) findViewById(R.id.detailCompraOnline));
+        String text = "<a href=\"" + cine.getUrlCompraOnline() + "\">" + getString(R.string.compraOnline) + "</a>";
+        textView.setText(Html.fromHtml(text));
+        textView.setClickable(true);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
 
         //Las coordenadas del cine
         setGoogleMapsCoords(cine.getCoordLatitud(), cine.getCoordLongitud(), cineName);

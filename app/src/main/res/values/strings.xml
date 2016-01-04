@@ -33,7 +33,8 @@
     <string name="save">Guardar</string>
     <string name="cancelar">Cancelar</string>
     <string name="promo">Código promocional</string>
-    <string name="horarios">"Horarios"</string>
-    <string name="horarios3d">"Horarios 3D"</string>
-    <string name="telefonoAbbr">"Tlf. "</string>
+    <string name="horarios">Horarios</string>
+    <string name="horarios3d">Horarios 3D</string>
+    <string name="telefonoAbbr">Tlf.</string>
+    <string name="compraOnline">Comprar entradas</string>
 </resources>
