@@ -48,16 +48,42 @@ public class PeliculaDetailActivity extends ActionBarActivity {
         Pelicula peli = sesion.getPelicula();
         ((TextView) findViewById(R.id.peliculaRowTitulo)).setText(peli.getTitulo());
         ((TextView) findViewById(R.id.peliculaRowDirector)).setText(getString(R.string.director) + " " + MyUtils.implode(peli.getDirector(), ", "));
-        ((TextView) findViewById(R.id.peliculaRowDuracion)).setText(MyUtils.implode(peli.getPais(), ", ") + ". " + getDuracion(peli.getDuracion()));
-        ((TextView) findViewById(R.id.peliculaRowEstreno)).setText(getString(R.string.estreno) + " " + peli.getEstreno());
+
+        String pais = "";
+        if (!peli.getPais().isEmpty()) {
+            pais = MyUtils.implode(peli.getPais(), ", ") + ". ";
+        }
+
+        String duracion = "";
+        if (peli.getDuracion() > 0) {
+            duracion = getDuracion(peli.getDuracion());
+        }
+
+        ((TextView) findViewById(R.id.peliculaRowDuracion)).setText(pais + duracion);
+
+        TextView estrenoView = ((TextView) findViewById(R.id.peliculaRowEstreno));
+        if (peli.getAnno() > 0) {
+            estrenoView.setText(getString(R.string.estreno) + " " + peli.getEstreno());
+            estrenoView.setVisibility(View.VISIBLE);
+        } else {
+            estrenoView.setVisibility(View.GONE);
+        }
+
         ((TextView) findViewById(R.id.peliculaRowSinopsis)).setText(peli.getSinopsis());
         ((TextView) findViewById(R.id.peliculaRowRepartoExtendido)).setText(MyUtils.implode(peli.getReparto(), "\n"));
-        ((TextView) findViewById(R.id.peliculaRowAnno)).setText(getString(R.string.anno) + " " + peli.getAnno());
+
+        TextView annoView = ((TextView) findViewById(R.id.peliculaRowAnno));
+        if (peli.getAnno() > 0) {
+            annoView.setText(getString(R.string.anno) + " " + peli.getAnno());
+            annoView.setVisibility(View.VISIBLE);
+        } else {
+            annoView.setVisibility(View.GONE);
+        }
 
         TextView genView = ((TextView) findViewById(R.id.peliculaRowGenero));
         String genero = MyUtils.implode(peli.getGenero(), ", ");
         if (!genero.isEmpty()) {
-            genView.setText(genero);
+            genView.setText(genero.trim());
             genView.setVisibility(View.VISIBLE);
         } else {
             genView.setVisibility(View.GONE);

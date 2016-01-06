@@ -21,7 +21,6 @@
             android:id="@+id/sesionesRowTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Large Text"
             android:textColor="@color/myTextPrimaryColor"
             android:textSize="18sp"
             android:textStyle="bold"/>
@@ -32,7 +31,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/sesionesRowTitulo"
-            android:text="Large Text"
             android:textColor="@color/myTextPrimaryColor"
             android:textStyle="italic"/>
 
@@ -41,7 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sesionesRowDuracion"
-            android:text="Large Text"
             android:textColor="@color/myTextPrimaryColor"/>
 
         <TextView
@@ -49,16 +46,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sesionesRowGenero"
-            android:textColor="@color/myTextPrimaryColor"
-            />
+            android:textColor="@color/myTextPrimaryColor"/>
 
         <TextView
             android:id="@+id/sesionesRowHorarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sesionesRowHorariosTitle"
-            android:textColor="@color/myTextPrimaryColor"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/myTextPrimaryColor"/>
 
         <TextView
             android:id="@+id/sesionesRowHorarios3dTitle"
@@ -72,8 +68,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sesionesRowHorarios3dTitle"
-            android:textColor="@color/myTextPrimaryColor"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/myTextPrimaryColor"/>
 
     </RelativeLayout>
 

@@ -70,9 +70,15 @@ public class SesionesAdapter extends ArrayAdapter {
 
         //Relleno los datos
         holder.titulo.setText(peli.getTitulo());
-        holder.duracion.setText(peli.getDuracion() + " " + context.getString(R.string.minutos));
+
+        if (peli.getDuracion() != 0) {
+            holder.duracion.setText(peli.getDuracion() + " " + context.getString(R.string.minutos));
+        } else {
+            holder.duracion.setText("");
+        }
+
 //        holder.duracion.setText(context.getString(R.string.duracion) + " " + peli.getDuracion() + " " + context.getString(R.string.minutos));
-        holder.genero.setText(MyUtils.implode(peli.getGenero(), ", "));
+        holder.genero.setText(MyUtils.implode(peli.getGenero(), ", ").trim());
 
         if (!item.getHorarios().isEmpty()) {
             holder.horariostitle.setText(context.getString(R.string.horarios));
